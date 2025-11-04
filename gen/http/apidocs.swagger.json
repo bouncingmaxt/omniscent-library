@@ -827,6 +827,29 @@
     }
   },
   "definitions": {
+    "RelationValue": {
+      "type": "object",
+      "properties": {
+        "stringValue": {
+          "type": "string"
+        },
+        "intValue": {
+          "type": "string",
+          "format": "int64"
+        },
+        "doubleValue": {
+          "type": "number",
+          "format": "double"
+        },
+        "floatValue": {
+          "type": "number",
+          "format": "float"
+        },
+        "boolValue": {
+          "type": "boolean"
+        }
+      }
+    },
     "geovisionCreateEventResponse": {
       "type": "object",
       "properties": {
@@ -933,28 +956,28 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/modelSource"
+            "$ref": "#/definitions/modelRelatedSource"
           }
         },
         "persons": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/modelPerson"
+            "$ref": "#/definitions/modelRelatedPerson"
           }
         },
         "organizations": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/modelOrganization"
+            "$ref": "#/definitions/modelRelatedOrganization"
           }
         },
         "websites": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/modelWebsite"
+            "$ref": "#/definitions/modelRelatedWebsite"
           }
         }
       }
@@ -994,7 +1017,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/modelEvent"
+            "$ref": "#/definitions/modelRelatedEvent"
           }
         }
       }
@@ -1063,11 +1086,12 @@
         }
       }
     },
-    "modelEntityBase": {
+    "modelEvent": {
       "type": "object",
       "properties": {
         "_id": {
-          "type": "string"
+          "type": "string",
+          "title": "Common data"
         },
         "_key": {
           "type": "string"
@@ -1075,27 +1099,12 @@
         "_rev": {
           "type": "string"
         },
-        "created_at": {
-          "type": "string",
-          "format": "int64"
-        },
-        "updated_at": {
-          "type": "string",
-          "format": "int64"
-        },
         "visible": {
           "type": "boolean"
-        }
-      }
-    },
-    "modelEvent": {
-      "type": "object",
-      "properties": {
-        "base": {
-          "$ref": "#/definitions/modelEntityBase"
         },
-        "loacation": {
-          "$ref": "#/definitions/modelLocationData"
+        "location": {
+          "$ref": "#/definitions/modelLocationData",
+          "title": "Main Data"
         },
         "title": {
           "type": "string"
@@ -1103,7 +1112,12 @@
         "description": {
           "type": "string"
         },
-        "timestamp": {
+        "happenedAt": {
+          "type": "string",
+          "format": "int64",
+          "title": "Time data"
+        },
+        "updatedAt": {
           "type": "string",
           "format": "int64"
         },
@@ -1111,7 +1125,8 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "title": "Additional"
         }
       }
     },
@@ -1153,35 +1168,89 @@
     "modelOrganization": {
       "type": "object",
       "properties": {
-        "base": {
-          "$ref": "#/definitions/modelEntityBase"
+        "_id": {
+          "type": "string",
+          "title": "Common data"
+        },
+        "_key": {
+          "type": "string"
+        },
+        "_rev": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "title": "Main Data"
         },
         "type": {
           "type": "string"
         },
-        "founded": {
+        "foundedAt": {
+          "type": "string",
+          "format": "int64",
+          "title": "Time data"
+        },
+        "discoveredAt": {
           "type": "string",
           "format": "int64"
+        },
+        "lastVisited": {
+          "type": "string",
+          "format": "int64"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Additional"
         }
       }
     },
     "modelPerson": {
       "type": "object",
       "properties": {
-        "base": {
-          "$ref": "#/definitions/modelEntityBase"
+        "_id": {
+          "type": "string",
+          "title": "Common data"
+        },
+        "_key": {
+          "type": "string"
+        },
+        "_rev": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "title": "Main Data"
         },
         "role": {
           "type": "string"
         },
         "nationality": {
           "type": "string"
+        },
+        "birthDate": {
+          "type": "string",
+          "format": "int64",
+          "title": "Time data"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "int64"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Additional"
         },
         "aliases": {
           "type": "array",
@@ -1191,11 +1260,77 @@
         }
       }
     },
+    "modelRelatedEvent": {
+      "type": "object",
+      "properties": {
+        "relation": {
+          "$ref": "#/definitions/modelRelation"
+        },
+        "event": {
+          "$ref": "#/definitions/modelEvent"
+        }
+      }
+    },
+    "modelRelatedOrganization": {
+      "type": "object",
+      "properties": {
+        "relation": {
+          "$ref": "#/definitions/modelRelation"
+        },
+        "organization": {
+          "$ref": "#/definitions/modelOrganization"
+        }
+      }
+    },
+    "modelRelatedPerson": {
+      "type": "object",
+      "properties": {
+        "relation": {
+          "$ref": "#/definitions/modelRelation"
+        },
+        "person": {
+          "$ref": "#/definitions/modelPerson"
+        }
+      }
+    },
+    "modelRelatedSource": {
+      "type": "object",
+      "properties": {
+        "relation": {
+          "$ref": "#/definitions/modelRelation"
+        },
+        "source": {
+          "$ref": "#/definitions/modelSource"
+        }
+      }
+    },
+    "modelRelatedWebsite": {
+      "type": "object",
+      "properties": {
+        "relation": {
+          "$ref": "#/definitions/modelRelation"
+        },
+        "website": {
+          "$ref": "#/definitions/modelWebsite"
+        }
+      }
+    },
     "modelRelation": {
       "type": "object",
       "properties": {
-        "base": {
-          "$ref": "#/definitions/modelRelationBase"
+        "_id": {
+          "type": "string",
+          "title": "Common data"
+        },
+        "_from": {
+          "type": "string"
+        },
+        "_to": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "title": "Main Data"
         },
         "confidence": {
           "type": "integer",
@@ -1204,28 +1339,15 @@
         "attributes": {
           "type": "object",
           "additionalProperties": {
-            "type": "string"
+            "$ref": "#/definitions/RelationValue"
           }
-        }
-      }
-    },
-    "modelRelationBase": {
-      "type": "object",
-      "properties": {
-        "_id": {
-          "type": "string"
         },
-        "_from": {
-          "type": "string"
-        },
-        "_to": {
-          "type": "string"
-        },
-        "created_at": {
+        "createdAt": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "Time data"
         },
-        "updated_at": {
+        "updatedAt": {
           "type": "string",
           "format": "int64"
         }
@@ -1234,11 +1356,22 @@
     "modelSource": {
       "type": "object",
       "properties": {
-        "base": {
-          "$ref": "#/definitions/modelEntityBase"
+        "_id": {
+          "type": "string",
+          "title": "Common data"
+        },
+        "_key": {
+          "type": "string"
+        },
+        "_rev": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "title": "Main Data"
         },
         "url": {
           "type": "string"
@@ -1248,24 +1381,46 @@
           "format": "int32"
         },
         "monitoring": {
-          "type": "boolean"
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "int64",
+          "title": "Time data"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "int64"
         },
         "tags": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "title": "Additional"
         }
       }
     },
     "modelWebsite": {
       "type": "object",
       "properties": {
-        "base": {
-          "$ref": "#/definitions/modelEntityBase"
+        "_id": {
+          "type": "string",
+          "title": "Common data"
+        },
+        "_key": {
+          "type": "string"
+        },
+        "_rev": {
+          "type": "string"
+        },
+        "visible": {
+          "type": "boolean"
         },
         "url": {
-          "type": "string"
+          "type": "string",
+          "title": "Main Data"
         },
         "domain": {
           "type": "string"
@@ -1276,23 +1431,25 @@
         "description": {
           "type": "string"
         },
-        "category": {
-          "type": "string"
+        "foundedAt": {
+          "type": "string",
+          "format": "int64",
+          "title": "Time data"
+        },
+        "discoveredAt": {
+          "type": "string",
+          "format": "int64"
         },
         "lastVisited": {
           "type": "string",
           "format": "int64"
         },
-        "createdAt": {
-          "type": "string",
-          "format": "int64"
-        },
-        "updatedAt": {
-          "type": "string",
-          "format": "int64"
-        },
-        "visible": {
-          "type": "boolean"
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Additional"
         }
       }
     },

@@ -64,10 +64,10 @@ message GetEventRequest {
 
 message GetEventResponse {
   model.Event event = 1;
-  repeated model.Source sources = 2;
-  repeated model.Person persons = 3;
-  repeated model.Organization organizations = 4;
-  repeated model.Website websites = 5;
+  repeated model.RelatedSource sources = 2;
+  repeated model.RelatedPerson persons = 3;
+  repeated model.RelatedOrganization organizations = 4;
+  repeated model.RelatedWebsite websites = 5;
 }
 
 message GetRelatedEventsRequest {
@@ -75,7 +75,7 @@ message GetRelatedEventsRequest {
 }
 
 message GetRelatedEventsResponse {
-  repeated model.Event events = 1;
+  repeated model.RelatedEvent events = 1;
 }
 
 message CreateEventRequest {

@@ -4,19 +4,14 @@ package model;
 
 option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;model";
 
-message EntityBase {
-  string id = 1 [json_name = "_id"];
-  string key = 2 [json_name = "_key"];
-  string rev = 3 [json_name = "_rev"];
-  int64 created_at = 4 [json_name = "created_at"];
-  int64 updated_at = 5 [json_name = "updated_at"];
-  bool visible = 6;
-}
-
-message RelationBase {
-  string id = 1 [json_name = "_id"];
-  string from = 2 [json_name = "_from"];
-  string to = 3 [json_name = "_to"];
-  int64 created_at = 4 [json_name = "created_at"];
-  int64 updated_at = 5 [json_name = "updated_at"];
+message LocationData {
+  float latitude = 1;
+  float longitude = 2;
+  string country_code = 3;
+  string administrative_area = 4;
+  string sub_administrative_area = 5;
+  string locality = 7;
+  string sub_locality = 8;
+  string address = 9;
+  int32 postal_code = 10;
 }

@@ -165,12 +165,12 @@ func (x *GetEventRequest) GetId() string {
 }
 
 type GetEventResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Event         *model.Event           `protobuf:"bytes,1,opt,name=event,proto3" json:"event,omitempty"`
-	Sources       []*model.Source        `protobuf:"bytes,2,rep,name=sources,proto3" json:"sources,omitempty"`
-	Persons       []*model.Person        `protobuf:"bytes,3,rep,name=persons,proto3" json:"persons,omitempty"`
-	Organizations []*model.Organization  `protobuf:"bytes,4,rep,name=organizations,proto3" json:"organizations,omitempty"`
-	Websites      []*model.Website       `protobuf:"bytes,5,rep,name=websites,proto3" json:"websites,omitempty"`
+	state         protoimpl.MessageState       `protogen:"open.v1"`
+	Event         *model.Event                 `protobuf:"bytes,1,opt,name=event,proto3" json:"event,omitempty"`
+	Sources       []*model.RelatedSource       `protobuf:"bytes,2,rep,name=sources,proto3" json:"sources,omitempty"`
+	Persons       []*model.RelatedPerson       `protobuf:"bytes,3,rep,name=persons,proto3" json:"persons,omitempty"`
+	Organizations []*model.RelatedOrganization `protobuf:"bytes,4,rep,name=organizations,proto3" json:"organizations,omitempty"`
+	Websites      []*model.RelatedWebsite      `protobuf:"bytes,5,rep,name=websites,proto3" json:"websites,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -212,28 +212,28 @@ func (x *GetEventResponse) GetEvent() *model.Event {
 	return nil
 }
 
-func (x *GetEventResponse) GetSources() []*model.Source {
+func (x *GetEventResponse) GetSources() []*model.RelatedSource {
 	if x != nil {
 		return x.Sources
 	}
 	return nil
 }
 
-func (x *GetEventResponse) GetPersons() []*model.Person {
+func (x *GetEventResponse) GetPersons() []*model.RelatedPerson {
 	if x != nil {
 		return x.Persons
 	}
 	return nil
 }
 
-func (x *GetEventResponse) GetOrganizations() []*model.Organization {
+func (x *GetEventResponse) GetOrganizations() []*model.RelatedOrganization {
 	if x != nil {
 		return x.Organizations
 	}
 	return nil
 }
 
-func (x *GetEventResponse) GetWebsites() []*model.Website {
+func (x *GetEventResponse) GetWebsites() []*model.RelatedWebsite {
 	if x != nil {
 		return x.Websites
 	}
@@ -286,7 +286,7 @@ func (x *GetRelatedEventsRequest) GetId() string {
 
 type GetRelatedEventsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Events        []*model.Event         `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
+	Events        []*model.RelatedEvent  `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -321,7 +321,7 @@ func (*GetRelatedEventsResponse) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetRelatedEventsResponse) GetEvents() []*model.Event {
+func (x *GetRelatedEventsResponse) GetEvents() []*model.RelatedEvent {
 	if x != nil {
 		return x.Events
 	}
@@ -612,17 +612,17 @@ const file_geovision_event_service_proto_rawDesc = "" +
 	"\x11GetEventsResponse\x12$\n" +
 	"\x06events\x18\x01 \x03(\v2\f.model.EventR\x06events\"!\n" +
 	"\x0fGetEventRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\xef\x01\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\x8b\x02\n" +
 	"\x10GetEventResponse\x12\"\n" +
-	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\x12'\n" +
-	"\asources\x18\x02 \x03(\v2\r.model.SourceR\asources\x12'\n" +
-	"\apersons\x18\x03 \x03(\v2\r.model.PersonR\apersons\x129\n" +
-	"\rorganizations\x18\x04 \x03(\v2\x13.model.OrganizationR\rorganizations\x12*\n" +
-	"\bwebsites\x18\x05 \x03(\v2\x0e.model.WebsiteR\bwebsites\")\n" +
+	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\x12.\n" +
+	"\asources\x18\x02 \x03(\v2\x14.model.RelatedSourceR\asources\x12.\n" +
+	"\apersons\x18\x03 \x03(\v2\x14.model.RelatedPersonR\apersons\x12@\n" +
+	"\rorganizations\x18\x04 \x03(\v2\x1a.model.RelatedOrganizationR\rorganizations\x121\n" +
+	"\bwebsites\x18\x05 \x03(\v2\x15.model.RelatedWebsiteR\bwebsites\")\n" +
 	"\x17GetRelatedEventsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"@\n" +
-	"\x18GetRelatedEventsResponse\x12$\n" +
-	"\x06events\x18\x01 \x03(\v2\f.model.EventR\x06events\"8\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"G\n" +
+	"\x18GetRelatedEventsResponse\x12+\n" +
+	"\x06events\x18\x01 \x03(\v2\x13.model.RelatedEventR\x06events\"8\n" +
 	"\x12CreateEventRequest\x12\"\n" +
 	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\"9\n" +
 	"\x13CreateEventResponse\x12\"\n" +
@@ -660,32 +660,33 @@ func file_geovision_event_service_proto_rawDescGZIP() []byte {
 
 var file_geovision_event_service_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_geovision_event_service_proto_goTypes = []any{
-	(*GetEventsRequest)(nil),         // 0: geovision.GetEventsRequest
-	(*GetEventsResponse)(nil),        // 1: geovision.GetEventsResponse
-	(*GetEventRequest)(nil),          // 2: geovision.GetEventRequest
-	(*GetEventResponse)(nil),         // 3: geovision.GetEventResponse
-	(*GetRelatedEventsRequest)(nil),  // 4: geovision.GetRelatedEventsRequest
-	(*GetRelatedEventsResponse)(nil), // 5: geovision.GetRelatedEventsResponse
-	(*CreateEventRequest)(nil),       // 6: geovision.CreateEventRequest
-	(*CreateEventResponse)(nil),      // 7: geovision.CreateEventResponse
-	(*UpdateEventRequest)(nil),       // 8: geovision.UpdateEventRequest
-	(*UpdateEventResponse)(nil),      // 9: geovision.UpdateEventResponse
-	(*DeleteEventRequest)(nil),       // 10: geovision.DeleteEventRequest
-	(*DeleteEventResponse)(nil),      // 11: geovision.DeleteEventResponse
-	(*model.Event)(nil),              // 12: model.Event
-	(*model.Source)(nil),             // 13: model.Source
-	(*model.Person)(nil),             // 14: model.Person
-	(*model.Organization)(nil),       // 15: model.Organization
-	(*model.Website)(nil),            // 16: model.Website
+	(*GetEventsRequest)(nil),          // 0: geovision.GetEventsRequest
+	(*GetEventsResponse)(nil),         // 1: geovision.GetEventsResponse
+	(*GetEventRequest)(nil),           // 2: geovision.GetEventRequest
+	(*GetEventResponse)(nil),          // 3: geovision.GetEventResponse
+	(*GetRelatedEventsRequest)(nil),   // 4: geovision.GetRelatedEventsRequest
+	(*GetRelatedEventsResponse)(nil),  // 5: geovision.GetRelatedEventsResponse
+	(*CreateEventRequest)(nil),        // 6: geovision.CreateEventRequest
+	(*CreateEventResponse)(nil),       // 7: geovision.CreateEventResponse
+	(*UpdateEventRequest)(nil),        // 8: geovision.UpdateEventRequest
+	(*UpdateEventResponse)(nil),       // 9: geovision.UpdateEventResponse
+	(*DeleteEventRequest)(nil),        // 10: geovision.DeleteEventRequest
+	(*DeleteEventResponse)(nil),       // 11: geovision.DeleteEventResponse
+	(*model.Event)(nil),               // 12: model.Event
+	(*model.RelatedSource)(nil),       // 13: model.RelatedSource
+	(*model.RelatedPerson)(nil),       // 14: model.RelatedPerson
+	(*model.RelatedOrganization)(nil), // 15: model.RelatedOrganization
+	(*model.RelatedWebsite)(nil),      // 16: model.RelatedWebsite
+	(*model.RelatedEvent)(nil),        // 17: model.RelatedEvent
 }
 var file_geovision_event_service_proto_depIdxs = []int32{
 	12, // 0: geovision.GetEventsResponse.events:type_name -> model.Event
 	12, // 1: geovision.GetEventResponse.event:type_name -> model.Event
-	13, // 2: geovision.GetEventResponse.sources:type_name -> model.Source
-	14, // 3: geovision.GetEventResponse.persons:type_name -> model.Person
-	15, // 4: geovision.GetEventResponse.organizations:type_name -> model.Organization
-	16, // 5: geovision.GetEventResponse.websites:type_name -> model.Website
-	12, // 6: geovision.GetRelatedEventsResponse.events:type_name -> model.Event
+	13, // 2: geovision.GetEventResponse.sources:type_name -> model.RelatedSource
+	14, // 3: geovision.GetEventResponse.persons:type_name -> model.RelatedPerson
+	15, // 4: geovision.GetEventResponse.organizations:type_name -> model.RelatedOrganization
+	16, // 5: geovision.GetEventResponse.websites:type_name -> model.RelatedWebsite
+	17, // 6: geovision.GetRelatedEventsResponse.events:type_name -> model.RelatedEvent
 	12, // 7: geovision.CreateEventRequest.event:type_name -> model.Event
 	12, // 8: geovision.CreateEventResponse.event:type_name -> model.Event
 	12, // 9: geovision.UpdateEventRequest.event:type_name -> model.Event

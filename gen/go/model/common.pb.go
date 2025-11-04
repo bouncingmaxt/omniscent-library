@@ -21,32 +21,35 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type EntityBase struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key           string                 `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev           string                 `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
-	CreatedAt     int64                  `protobuf:"varint,4,opt,name=created_at,proto3" json:"created_at,omitempty"`
-	UpdatedAt     int64                  `protobuf:"varint,5,opt,name=updated_at,proto3" json:"updated_at,omitempty"`
-	Visible       bool                   `protobuf:"varint,6,opt,name=visible,proto3" json:"visible,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+type LocationData struct {
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	Latitude              float32                `protobuf:"fixed32,1,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	Longitude             float32                `protobuf:"fixed32,2,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	CountryCode           string                 `protobuf:"bytes,3,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	AdministrativeArea    string                 `protobuf:"bytes,4,opt,name=administrative_area,json=administrativeArea,proto3" json:"administrative_area,omitempty"`
+	SubAdministrativeArea string                 `protobuf:"bytes,5,opt,name=sub_administrative_area,json=subAdministrativeArea,proto3" json:"sub_administrative_area,omitempty"`
+	Locality              string                 `protobuf:"bytes,7,opt,name=locality,proto3" json:"locality,omitempty"`
+	SubLocality           string                 `protobuf:"bytes,8,opt,name=sub_locality,json=subLocality,proto3" json:"sub_locality,omitempty"`
+	Address               string                 `protobuf:"bytes,9,opt,name=address,proto3" json:"address,omitempty"`
+	PostalCode            int32                  `protobuf:"varint,10,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
-func (x *EntityBase) Reset() {
-	*x = EntityBase{}
+func (x *LocationData) Reset() {
+	*x = LocationData{}
 	mi := &file_model_common_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *EntityBase) String() string {
+func (x *LocationData) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*EntityBase) ProtoMessage() {}
+func (*LocationData) ProtoMessage() {}
 
-func (x *EntityBase) ProtoReflect() protoreflect.Message {
+func (x *LocationData) ProtoReflect() protoreflect.Message {
 	mi := &file_model_common_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -58,125 +61,70 @@ func (x *EntityBase) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use EntityBase.ProtoReflect.Descriptor instead.
-func (*EntityBase) Descriptor() ([]byte, []int) {
+// Deprecated: Use LocationData.ProtoReflect.Descriptor instead.
+func (*LocationData) Descriptor() ([]byte, []int) {
 	return file_model_common_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *EntityBase) GetId() string {
+func (x *LocationData) GetLatitude() float32 {
 	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *EntityBase) GetKey() string {
-	if x != nil {
-		return x.Key
-	}
-	return ""
-}
-
-func (x *EntityBase) GetRev() string {
-	if x != nil {
-		return x.Rev
-	}
-	return ""
-}
-
-func (x *EntityBase) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
+		return x.Latitude
 	}
 	return 0
 }
 
-func (x *EntityBase) GetUpdatedAt() int64 {
+func (x *LocationData) GetLongitude() float32 {
 	if x != nil {
-		return x.UpdatedAt
+		return x.Longitude
 	}
 	return 0
 }
 
-func (x *EntityBase) GetVisible() bool {
+func (x *LocationData) GetCountryCode() string {
 	if x != nil {
-		return x.Visible
-	}
-	return false
-}
-
-type RelationBase struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	From          string                 `protobuf:"bytes,2,opt,name=from,json=_from,proto3" json:"from,omitempty"`
-	To            string                 `protobuf:"bytes,3,opt,name=to,json=_to,proto3" json:"to,omitempty"`
-	CreatedAt     int64                  `protobuf:"varint,4,opt,name=created_at,proto3" json:"created_at,omitempty"`
-	UpdatedAt     int64                  `protobuf:"varint,5,opt,name=updated_at,proto3" json:"updated_at,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RelationBase) Reset() {
-	*x = RelationBase{}
-	mi := &file_model_common_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RelationBase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RelationBase) ProtoMessage() {}
-
-func (x *RelationBase) ProtoReflect() protoreflect.Message {
-	mi := &file_model_common_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RelationBase.ProtoReflect.Descriptor instead.
-func (*RelationBase) Descriptor() ([]byte, []int) {
-	return file_model_common_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *RelationBase) GetId() string {
-	if x != nil {
-		return x.Id
+		return x.CountryCode
 	}
 	return ""
 }
 
-func (x *RelationBase) GetFrom() string {
+func (x *LocationData) GetAdministrativeArea() string {
 	if x != nil {
-		return x.From
+		return x.AdministrativeArea
 	}
 	return ""
 }
 
-func (x *RelationBase) GetTo() string {
+func (x *LocationData) GetSubAdministrativeArea() string {
 	if x != nil {
-		return x.To
+		return x.SubAdministrativeArea
 	}
 	return ""
 }
 
-func (x *RelationBase) GetCreatedAt() int64 {
+func (x *LocationData) GetLocality() string {
 	if x != nil {
-		return x.CreatedAt
+		return x.Locality
 	}
-	return 0
+	return ""
 }
 
-func (x *RelationBase) GetUpdatedAt() int64 {
+func (x *LocationData) GetSubLocality() string {
 	if x != nil {
-		return x.UpdatedAt
+		return x.SubLocality
+	}
+	return ""
+}
+
+func (x *LocationData) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *LocationData) GetPostalCode() int32 {
+	if x != nil {
+		return x.PostalCode
 	}
 	return 0
 }
@@ -185,29 +133,19 @@ var File_model_common_proto protoreflect.FileDescriptor
 
 const file_model_common_proto_rawDesc = "" +
 	"\n" +
-	"\x12model/common.proto\x12\x05model\"\x9d\x01\n" +
-	"\n" +
-	"EntityBase\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x1e\n" +
-	"\n" +
-	"created_at\x18\x04 \x01(\x03R\n" +
-	"created_at\x12\x1e\n" +
-	"\n" +
-	"updated_at\x18\x05 \x01(\x03R\n" +
-	"updated_at\x12\x18\n" +
-	"\avisible\x18\x06 \x01(\bR\avisible\"\x85\x01\n" +
-	"\fRelationBase\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x13\n" +
-	"\x04from\x18\x02 \x01(\tR\x05_from\x12\x0f\n" +
-	"\x02to\x18\x03 \x01(\tR\x03_to\x12\x1e\n" +
-	"\n" +
-	"created_at\x18\x04 \x01(\x03R\n" +
-	"created_at\x12\x1e\n" +
-	"\n" +
-	"updated_at\x18\x05 \x01(\x03R\n" +
-	"updated_atB>Z<github.com/bouncingmaxt/omniscent-library/gen/go/model;modelb\x06proto3"
+	"\x12model/common.proto\x12\x05model\"\xce\x02\n" +
+	"\fLocationData\x12\x1a\n" +
+	"\blatitude\x18\x01 \x01(\x02R\blatitude\x12\x1c\n" +
+	"\tlongitude\x18\x02 \x01(\x02R\tlongitude\x12!\n" +
+	"\fcountry_code\x18\x03 \x01(\tR\vcountryCode\x12/\n" +
+	"\x13administrative_area\x18\x04 \x01(\tR\x12administrativeArea\x126\n" +
+	"\x17sub_administrative_area\x18\x05 \x01(\tR\x15subAdministrativeArea\x12\x1a\n" +
+	"\blocality\x18\a \x01(\tR\blocality\x12!\n" +
+	"\fsub_locality\x18\b \x01(\tR\vsubLocality\x12\x18\n" +
+	"\aaddress\x18\t \x01(\tR\aaddress\x12\x1f\n" +
+	"\vpostal_code\x18\n" +
+	" \x01(\x05R\n" +
+	"postalCodeB>Z<github.com/bouncingmaxt/omniscent-library/gen/go/model;modelb\x06proto3"
 
 var (
 	file_model_common_proto_rawDescOnce sync.Once
@@ -221,10 +159,9 @@ func file_model_common_proto_rawDescGZIP() []byte {
 	return file_model_common_proto_rawDescData
 }
 
-var file_model_common_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_model_common_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_model_common_proto_goTypes = []any{
-	(*EntityBase)(nil),   // 0: model.EntityBase
-	(*RelationBase)(nil), // 1: model.RelationBase
+	(*LocationData)(nil), // 0: model.LocationData
 }
 var file_model_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -245,7 +182,7 @@ func file_model_common_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_common_proto_rawDesc), len(file_model_common_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

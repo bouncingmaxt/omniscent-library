@@ -6,66 +6,140 @@ import "model/common.proto";
 
 option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;model";
 
-message LocationData {
-  float latitude = 1;
-  float longitude = 2;
-  string country_code = 3;
-  string administrative_area = 4;
-  string sub_administrative_area = 5;
-  string locality = 7;
-  string sub_locality = 8;
-  string address = 9;
-  int32 postal_code = 10;
-}
-
 message Relation {
-  model.RelationBase base = 1;
-  int32 confidence = 2;
-  map<string, string> attributes = 3;
+  // Common data
+  string id = 1 [json_name = "_id"];
+  string from = 2 [json_name = "_from"];
+  string to = 3 [json_name = "_to"];
+  // Main Data
+  string name = 10;
+  int32 confidence = 11;
+  map<string, Value> attributes = 12;
+  // Time data
+  int64 created_at = 20;
+  int64 updated_at = 21;
+
+  message Value {
+    oneof kind {
+      string string_value = 1;
+      int64 int_value = 2;
+      double double_value = 3;
+      float float_value = 4;
+      bool bool_value = 5;
+    }
+  }
 }
 
 message Event {
-  model.EntityBase base = 1;
-  LocationData loacation = 2;
-  string title = 3;
-  string description = 4;
-  int64 timestamp = 5;
-  repeated string tags = 6;
+  // Common data
+  string id = 1 [json_name = "_id"];
+  string key = 2 [json_name = "_key"];
+  string rev = 3 [json_name = "_rev"];
+  bool visible = 4;
+  // Main Data
+  LocationData location = 10;
+  string title = 11;
+  string description = 12;
+  // Time data
+  int64 happened_at = 20;
+  int64 updated_at = 21;
+  // Additional
+  repeated string tags = 30;
+}
+
+message RelatedEvent {
+  Relation relation = 1;
+  Event event = 2;
 }
 
 message Source {
-  model.EntityBase base = 1;
-  string name = 2;
-  string url = 3;
-  int32 reliability = 4;
-  bool monitoring = 5;
-  repeated string tags = 6;
+  // Common data
+  string id = 1 [json_name = "_id"];
+  string key = 2 [json_name = "_key"];
+  string rev = 3 [json_name = "_rev"];
+  bool visible = 4;
+  // Main Data
+  string name = 10;
+  string url = 11;
+  int32 reliability = 12;
+  int32 monitoring = 13;
+  // Time data
+  int64 created_at = 20;
+  int64 updated_at = 21;
+  // Additional
+  repeated string tags = 30;
+}
+
+message RelatedSource {
+  Relation relation = 1;
+  Source source = 2;
 }
 
 message Person {
-  model.EntityBase base = 1;
-  string name = 2;
-  string role = 3;
-  string nationality = 4;
-  repeated string aliases = 5;
+  // Common data
+  string id = 1 [json_name = "_id"];
+  string key = 2 [json_name = "_key"];
+  string rev = 3 [json_name = "_rev"];
+  bool visible = 4;
+  // Main Data
+  string name = 10;
+  string role = 11;
+  string nationality = 12;
+  // Time data
+  int64 birth_date = 20;
+  int64 updated_at = 21;
+  // Additional
+  repeated string tags = 30;
+  repeated string aliases = 31;
+}
+
+message RelatedPerson {
+  Relation relation = 1;
+  Person person = 2;
 }
 
 message Organization {
-  model.EntityBase base = 1;
-  string name = 2;
-  string type = 5;
-  int64 founded = 6;
+  // Common data
+  string id = 1 [json_name = "_id"];
+  string key = 2 [json_name = "_key"];
+  string rev = 3 [json_name = "_rev"];
+  bool visible = 4;
+  // Main Data
+  string name = 10;
+  string type = 11;
+  // Time data
+  int64 founded_at = 20;
+  int64 discovered_at = 21;
+  int64 last_visited = 22;
+  // Additional
+  repeated string tags = 30;
+}
+
+message RelatedOrganization {
+  Relation relation = 1;
+  Organization organization = 2;
 }
 
 message Website {
-  model.EntityBase base = 1;
-  string url = 4;
-  string domain = 5;
-  string title = 6;
-  string description = 7;
-  string category = 8;
-  int64 last_visited = 9;
-  int64 created_at = 10;
-  int64 updated_at = 11;
-  bool visible = 12;
+  // Common data
+  string id = 1 [json_name = "_id"];
+  string key = 2 [json_name = "_key"];
+  string rev = 3 [json_name = "_rev"];
+  bool visible = 4;
+  // Main Data
+  string url = 10;
+  string domain = 11;
+  string title = 12;
+  string description = 13;
+  // Time data
+  int64 founded_at = 20;
+  int64 discovered_at = 21;
+  int64 last_visited = 22;
+  // Additional
+  repeated string tags = 30;
+}
+
+message RelatedWebsite {
+  Relation relation = 1;
+  Website website = 2;
 }

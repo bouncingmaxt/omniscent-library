@@ -21,126 +21,26 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type LocationData struct {
-	state                 protoimpl.MessageState `protogen:"open.v1"`
-	Latitude              float32                `protobuf:"fixed32,1,opt,name=latitude,proto3" json:"latitude,omitempty"`
-	Longitude             float32                `protobuf:"fixed32,2,opt,name=longitude,proto3" json:"longitude,omitempty"`
-	CountryCode           string                 `protobuf:"bytes,3,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
-	AdministrativeArea    string                 `protobuf:"bytes,4,opt,name=administrative_area,json=administrativeArea,proto3" json:"administrative_area,omitempty"`
-	SubAdministrativeArea string                 `protobuf:"bytes,5,opt,name=sub_administrative_area,json=subAdministrativeArea,proto3" json:"sub_administrative_area,omitempty"`
-	Locality              string                 `protobuf:"bytes,7,opt,name=locality,proto3" json:"locality,omitempty"`
-	SubLocality           string                 `protobuf:"bytes,8,opt,name=sub_locality,json=subLocality,proto3" json:"sub_locality,omitempty"`
-	Address               string                 `protobuf:"bytes,9,opt,name=address,proto3" json:"address,omitempty"`
-	PostalCode            int32                  `protobuf:"varint,10,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
-}
-
-func (x *LocationData) Reset() {
-	*x = LocationData{}
-	mi := &file_model_osint_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LocationData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LocationData) ProtoMessage() {}
-
-func (x *LocationData) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LocationData.ProtoReflect.Descriptor instead.
-func (*LocationData) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *LocationData) GetLatitude() float32 {
-	if x != nil {
-		return x.Latitude
-	}
-	return 0
-}
-
-func (x *LocationData) GetLongitude() float32 {
-	if x != nil {
-		return x.Longitude
-	}
-	return 0
-}
-
-func (x *LocationData) GetCountryCode() string {
-	if x != nil {
-		return x.CountryCode
-	}
-	return ""
-}
-
-func (x *LocationData) GetAdministrativeArea() string {
-	if x != nil {
-		return x.AdministrativeArea
-	}
-	return ""
-}
-
-func (x *LocationData) GetSubAdministrativeArea() string {
-	if x != nil {
-		return x.SubAdministrativeArea
-	}
-	return ""
-}
-
-func (x *LocationData) GetLocality() string {
-	if x != nil {
-		return x.Locality
-	}
-	return ""
-}
-
-func (x *LocationData) GetSubLocality() string {
-	if x != nil {
-		return x.SubLocality
-	}
-	return ""
-}
-
-func (x *LocationData) GetAddress() string {
-	if x != nil {
-		return x.Address
-	}
-	return ""
-}
-
-func (x *LocationData) GetPostalCode() int32 {
-	if x != nil {
-		return x.PostalCode
-	}
-	return 0
-}
-
 type Relation struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Base          *RelationBase          `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
-	Confidence    int32                  `protobuf:"varint,2,opt,name=confidence,proto3" json:"confidence,omitempty"`
-	Attributes    map[string]string      `protobuf:"bytes,3,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Common data
+	Id   string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
+	From string `protobuf:"bytes,2,opt,name=from,json=_from,proto3" json:"from,omitempty"`
+	To   string `protobuf:"bytes,3,opt,name=to,json=_to,proto3" json:"to,omitempty"`
+	// Main Data
+	Name       string                     `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
+	Confidence int32                      `protobuf:"varint,11,opt,name=confidence,proto3" json:"confidence,omitempty"`
+	Attributes map[string]*Relation_Value `protobuf:"bytes,12,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// Time data
+	CreatedAt     int64 `protobuf:"varint,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Relation) Reset() {
 	*x = Relation{}
-	mi := &file_model_osint_proto_msgTypes[1]
+	mi := &file_model_osint_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -152,7 +52,7 @@ func (x *Relation) String() string {
 func (*Relation) ProtoMessage() {}
 
 func (x *Relation) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[1]
+	mi := &file_model_osint_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -165,14 +65,35 @@ func (x *Relation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Relation.ProtoReflect.Descriptor instead.
 func (*Relation) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{1}
+	return file_model_osint_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Relation) GetBase() *RelationBase {
+func (x *Relation) GetId() string {
 	if x != nil {
-		return x.Base
+		return x.Id
 	}
-	return nil
+	return ""
+}
+
+func (x *Relation) GetFrom() string {
+	if x != nil {
+		return x.From
+	}
+	return ""
+}
+
+func (x *Relation) GetTo() string {
+	if x != nil {
+		return x.To
+	}
+	return ""
+}
+
+func (x *Relation) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
 }
 
 func (x *Relation) GetConfidence() int32 {
@@ -182,28 +103,50 @@ func (x *Relation) GetConfidence() int32 {
 	return 0
 }
 
-func (x *Relation) GetAttributes() map[string]string {
+func (x *Relation) GetAttributes() map[string]*Relation_Value {
 	if x != nil {
 		return x.Attributes
 	}
 	return nil
 }
 
+func (x *Relation) GetCreatedAt() int64 {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return 0
+}
+
+func (x *Relation) GetUpdatedAt() int64 {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return 0
+}
+
 type Event struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Base          *EntityBase            `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
-	Loacation     *LocationData          `protobuf:"bytes,2,opt,name=loacation,proto3" json:"loacation,omitempty"`
-	Title         string                 `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`
-	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	Timestamp     int64                  `protobuf:"varint,5,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	Tags          []string               `protobuf:"bytes,6,rep,name=tags,proto3" json:"tags,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Common data
+	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
+	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
+	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
+	// Main Data
+	Location    *LocationData `protobuf:"bytes,10,opt,name=location,proto3" json:"location,omitempty"`
+	Title       string        `protobuf:"bytes,11,opt,name=title,proto3" json:"title,omitempty"`
+	Description string        `protobuf:"bytes,12,opt,name=description,proto3" json:"description,omitempty"`
+	// Time data
+	HappenedAt int64 `protobuf:"varint,20,opt,name=happened_at,json=happenedAt,proto3" json:"happened_at,omitempty"`
+	UpdatedAt  int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Additional
+	Tags          []string `protobuf:"bytes,30,rep,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Event) Reset() {
 	*x = Event{}
-	mi := &file_model_osint_proto_msgTypes[2]
+	mi := &file_model_osint_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -215,7 +158,7 @@ func (x *Event) String() string {
 func (*Event) ProtoMessage() {}
 
 func (x *Event) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[2]
+	mi := &file_model_osint_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -228,19 +171,40 @@ func (x *Event) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Event.ProtoReflect.Descriptor instead.
 func (*Event) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{2}
+	return file_model_osint_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Event) GetBase() *EntityBase {
+func (x *Event) GetId() string {
 	if x != nil {
-		return x.Base
+		return x.Id
 	}
-	return nil
+	return ""
 }
 
-func (x *Event) GetLoacation() *LocationData {
+func (x *Event) GetKey() string {
 	if x != nil {
-		return x.Loacation
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Event) GetRev() string {
+	if x != nil {
+		return x.Rev
+	}
+	return ""
+}
+
+func (x *Event) GetVisible() bool {
+	if x != nil {
+		return x.Visible
+	}
+	return false
+}
+
+func (x *Event) GetLocation() *LocationData {
+	if x != nil {
+		return x.Location
 	}
 	return nil
 }
@@ -259,9 +223,16 @@ func (x *Event) GetDescription() string {
 	return ""
 }
 
-func (x *Event) GetTimestamp() int64 {
+func (x *Event) GetHappenedAt() int64 {
 	if x != nil {
-		return x.Timestamp
+		return x.HappenedAt
+	}
+	return 0
+}
+
+func (x *Event) GetUpdatedAt() int64 {
+	if x != nil {
+		return x.UpdatedAt
 	}
 	return 0
 }
@@ -273,14 +244,75 @@ func (x *Event) GetTags() []string {
 	return nil
 }
 
-type Source struct {
+type RelatedEvent struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Base          *EntityBase            `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Url           string                 `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
-	Reliability   int32                  `protobuf:"varint,4,opt,name=reliability,proto3" json:"reliability,omitempty"`
-	Monitoring    bool                   `protobuf:"varint,5,opt,name=monitoring,proto3" json:"monitoring,omitempty"`
-	Tags          []string               `protobuf:"bytes,6,rep,name=tags,proto3" json:"tags,omitempty"`
+	Relation      *Relation              `protobuf:"bytes,1,opt,name=relation,proto3" json:"relation,omitempty"`
+	Event         *Event                 `protobuf:"bytes,2,opt,name=event,proto3" json:"event,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RelatedEvent) Reset() {
+	*x = RelatedEvent{}
+	mi := &file_model_osint_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RelatedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RelatedEvent) ProtoMessage() {}
+
+func (x *RelatedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_model_osint_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RelatedEvent.ProtoReflect.Descriptor instead.
+func (*RelatedEvent) Descriptor() ([]byte, []int) {
+	return file_model_osint_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *RelatedEvent) GetRelation() *Relation {
+	if x != nil {
+		return x.Relation
+	}
+	return nil
+}
+
+func (x *RelatedEvent) GetEvent() *Event {
+	if x != nil {
+		return x.Event
+	}
+	return nil
+}
+
+type Source struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Common data
+	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
+	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
+	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
+	// Main Data
+	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
+	Url         string `protobuf:"bytes,11,opt,name=url,proto3" json:"url,omitempty"`
+	Reliability int32  `protobuf:"varint,12,opt,name=reliability,proto3" json:"reliability,omitempty"`
+	Monitoring  int32  `protobuf:"varint,13,opt,name=monitoring,proto3" json:"monitoring,omitempty"`
+	// Time data
+	CreatedAt int64 `protobuf:"varint,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Additional
+	Tags          []string `protobuf:"bytes,30,rep,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -315,11 +347,32 @@ func (*Source) Descriptor() ([]byte, []int) {
 	return file_model_osint_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *Source) GetBase() *EntityBase {
+func (x *Source) GetId() string {
 	if x != nil {
-		return x.Base
+		return x.Id
 	}
-	return nil
+	return ""
+}
+
+func (x *Source) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Source) GetRev() string {
+	if x != nil {
+		return x.Rev
+	}
+	return ""
+}
+
+func (x *Source) GetVisible() bool {
+	if x != nil {
+		return x.Visible
+	}
+	return false
 }
 
 func (x *Source) GetName() string {
@@ -343,11 +396,25 @@ func (x *Source) GetReliability() int32 {
 	return 0
 }
 
-func (x *Source) GetMonitoring() bool {
+func (x *Source) GetMonitoring() int32 {
 	if x != nil {
 		return x.Monitoring
 	}
-	return false
+	return 0
+}
+
+func (x *Source) GetCreatedAt() int64 {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return 0
+}
+
+func (x *Source) GetUpdatedAt() int64 {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return 0
 }
 
 func (x *Source) GetTags() []string {
@@ -357,20 +424,82 @@ func (x *Source) GetTags() []string {
 	return nil
 }
 
-type Person struct {
+type RelatedSource struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Base          *EntityBase            `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Role          string                 `protobuf:"bytes,3,opt,name=role,proto3" json:"role,omitempty"`
-	Nationality   string                 `protobuf:"bytes,4,opt,name=nationality,proto3" json:"nationality,omitempty"`
-	Aliases       []string               `protobuf:"bytes,5,rep,name=aliases,proto3" json:"aliases,omitempty"`
+	Relation      *Relation              `protobuf:"bytes,1,opt,name=relation,proto3" json:"relation,omitempty"`
+	Source        *Source                `protobuf:"bytes,2,opt,name=source,proto3" json:"source,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RelatedSource) Reset() {
+	*x = RelatedSource{}
+	mi := &file_model_osint_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RelatedSource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RelatedSource) ProtoMessage() {}
+
+func (x *RelatedSource) ProtoReflect() protoreflect.Message {
+	mi := &file_model_osint_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RelatedSource.ProtoReflect.Descriptor instead.
+func (*RelatedSource) Descriptor() ([]byte, []int) {
+	return file_model_osint_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *RelatedSource) GetRelation() *Relation {
+	if x != nil {
+		return x.Relation
+	}
+	return nil
+}
+
+func (x *RelatedSource) GetSource() *Source {
+	if x != nil {
+		return x.Source
+	}
+	return nil
+}
+
+type Person struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Common data
+	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
+	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
+	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
+	// Main Data
+	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
+	Role        string `protobuf:"bytes,11,opt,name=role,proto3" json:"role,omitempty"`
+	Nationality string `protobuf:"bytes,12,opt,name=nationality,proto3" json:"nationality,omitempty"`
+	// Time data
+	BirthDate int64 `protobuf:"varint,20,opt,name=birth_date,json=birthDate,proto3" json:"birth_date,omitempty"`
+	UpdatedAt int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Additional
+	Tags          []string `protobuf:"bytes,30,rep,name=tags,proto3" json:"tags,omitempty"`
+	Aliases       []string `protobuf:"bytes,31,rep,name=aliases,proto3" json:"aliases,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Person) Reset() {
 	*x = Person{}
-	mi := &file_model_osint_proto_msgTypes[4]
+	mi := &file_model_osint_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -382,7 +511,7 @@ func (x *Person) String() string {
 func (*Person) ProtoMessage() {}
 
 func (x *Person) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[4]
+	mi := &file_model_osint_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -395,14 +524,35 @@ func (x *Person) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Person.ProtoReflect.Descriptor instead.
 func (*Person) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{4}
+	return file_model_osint_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *Person) GetBase() *EntityBase {
+func (x *Person) GetId() string {
 	if x != nil {
-		return x.Base
+		return x.Id
 	}
-	return nil
+	return ""
+}
+
+func (x *Person) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Person) GetRev() string {
+	if x != nil {
+		return x.Rev
+	}
+	return ""
+}
+
+func (x *Person) GetVisible() bool {
+	if x != nil {
+		return x.Visible
+	}
+	return false
 }
 
 func (x *Person) GetName() string {
@@ -426,6 +576,27 @@ func (x *Person) GetNationality() string {
 	return ""
 }
 
+func (x *Person) GetBirthDate() int64 {
+	if x != nil {
+		return x.BirthDate
+	}
+	return 0
+}
+
+func (x *Person) GetUpdatedAt() int64 {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return 0
+}
+
+func (x *Person) GetTags() []string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
 func (x *Person) GetAliases() []string {
 	if x != nil {
 		return x.Aliases
@@ -433,19 +604,81 @@ func (x *Person) GetAliases() []string {
 	return nil
 }
 
-type Organization struct {
+type RelatedPerson struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Base          *EntityBase            `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Type          string                 `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
-	Founded       int64                  `protobuf:"varint,6,opt,name=founded,proto3" json:"founded,omitempty"`
+	Relation      *Relation              `protobuf:"bytes,1,opt,name=relation,proto3" json:"relation,omitempty"`
+	Person        *Person                `protobuf:"bytes,2,opt,name=person,proto3" json:"person,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RelatedPerson) Reset() {
+	*x = RelatedPerson{}
+	mi := &file_model_osint_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RelatedPerson) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RelatedPerson) ProtoMessage() {}
+
+func (x *RelatedPerson) ProtoReflect() protoreflect.Message {
+	mi := &file_model_osint_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RelatedPerson.ProtoReflect.Descriptor instead.
+func (*RelatedPerson) Descriptor() ([]byte, []int) {
+	return file_model_osint_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *RelatedPerson) GetRelation() *Relation {
+	if x != nil {
+		return x.Relation
+	}
+	return nil
+}
+
+func (x *RelatedPerson) GetPerson() *Person {
+	if x != nil {
+		return x.Person
+	}
+	return nil
+}
+
+type Organization struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Common data
+	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
+	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
+	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
+	// Main Data
+	Name string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
+	Type string `protobuf:"bytes,11,opt,name=type,proto3" json:"type,omitempty"`
+	// Time data
+	FoundedAt    int64 `protobuf:"varint,20,opt,name=founded_at,json=foundedAt,proto3" json:"founded_at,omitempty"`
+	DiscoveredAt int64 `protobuf:"varint,21,opt,name=discovered_at,json=discoveredAt,proto3" json:"discovered_at,omitempty"`
+	LastVisited  int64 `protobuf:"varint,22,opt,name=last_visited,json=lastVisited,proto3" json:"last_visited,omitempty"`
+	// Additional
+	Tags          []string `protobuf:"bytes,30,rep,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Organization) Reset() {
 	*x = Organization{}
-	mi := &file_model_osint_proto_msgTypes[5]
+	mi := &file_model_osint_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -457,7 +690,7 @@ func (x *Organization) String() string {
 func (*Organization) ProtoMessage() {}
 
 func (x *Organization) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[5]
+	mi := &file_model_osint_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -470,14 +703,35 @@ func (x *Organization) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Organization.ProtoReflect.Descriptor instead.
 func (*Organization) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{5}
+	return file_model_osint_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *Organization) GetBase() *EntityBase {
+func (x *Organization) GetId() string {
 	if x != nil {
-		return x.Base
+		return x.Id
 	}
-	return nil
+	return ""
+}
+
+func (x *Organization) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Organization) GetRev() string {
+	if x != nil {
+		return x.Rev
+	}
+	return ""
+}
+
+func (x *Organization) GetVisible() bool {
+	if x != nil {
+		return x.Visible
+	}
+	return false
 }
 
 func (x *Organization) GetName() string {
@@ -494,32 +748,111 @@ func (x *Organization) GetType() string {
 	return ""
 }
 
-func (x *Organization) GetFounded() int64 {
+func (x *Organization) GetFoundedAt() int64 {
 	if x != nil {
-		return x.Founded
+		return x.FoundedAt
 	}
 	return 0
 }
 
-type Website struct {
+func (x *Organization) GetDiscoveredAt() int64 {
+	if x != nil {
+		return x.DiscoveredAt
+	}
+	return 0
+}
+
+func (x *Organization) GetLastVisited() int64 {
+	if x != nil {
+		return x.LastVisited
+	}
+	return 0
+}
+
+func (x *Organization) GetTags() []string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+type RelatedOrganization struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Base          *EntityBase            `protobuf:"bytes,1,opt,name=base,proto3" json:"base,omitempty"`
-	Url           string                 `protobuf:"bytes,4,opt,name=url,proto3" json:"url,omitempty"`
-	Domain        string                 `protobuf:"bytes,5,opt,name=domain,proto3" json:"domain,omitempty"`
-	Title         string                 `protobuf:"bytes,6,opt,name=title,proto3" json:"title,omitempty"`
-	Description   string                 `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
-	Category      string                 `protobuf:"bytes,8,opt,name=category,proto3" json:"category,omitempty"`
-	LastVisited   int64                  `protobuf:"varint,9,opt,name=last_visited,json=lastVisited,proto3" json:"last_visited,omitempty"`
-	CreatedAt     int64                  `protobuf:"varint,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     int64                  `protobuf:"varint,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	Visible       bool                   `protobuf:"varint,12,opt,name=visible,proto3" json:"visible,omitempty"`
+	Relation      *Relation              `protobuf:"bytes,1,opt,name=relation,proto3" json:"relation,omitempty"`
+	Organization  *Organization          `protobuf:"bytes,2,opt,name=organization,proto3" json:"organization,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RelatedOrganization) Reset() {
+	*x = RelatedOrganization{}
+	mi := &file_model_osint_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RelatedOrganization) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RelatedOrganization) ProtoMessage() {}
+
+func (x *RelatedOrganization) ProtoReflect() protoreflect.Message {
+	mi := &file_model_osint_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RelatedOrganization.ProtoReflect.Descriptor instead.
+func (*RelatedOrganization) Descriptor() ([]byte, []int) {
+	return file_model_osint_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *RelatedOrganization) GetRelation() *Relation {
+	if x != nil {
+		return x.Relation
+	}
+	return nil
+}
+
+func (x *RelatedOrganization) GetOrganization() *Organization {
+	if x != nil {
+		return x.Organization
+	}
+	return nil
+}
+
+type Website struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Common data
+	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
+	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
+	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
+	// Main Data
+	Url         string `protobuf:"bytes,10,opt,name=url,proto3" json:"url,omitempty"`
+	Domain      string `protobuf:"bytes,11,opt,name=domain,proto3" json:"domain,omitempty"`
+	Title       string `protobuf:"bytes,12,opt,name=title,proto3" json:"title,omitempty"`
+	Description string `protobuf:"bytes,13,opt,name=description,proto3" json:"description,omitempty"`
+	// Time data
+	FoundedAt    int64 `protobuf:"varint,20,opt,name=founded_at,json=foundedAt,proto3" json:"founded_at,omitempty"`
+	DiscoveredAt int64 `protobuf:"varint,21,opt,name=discovered_at,json=discoveredAt,proto3" json:"discovered_at,omitempty"`
+	LastVisited  int64 `protobuf:"varint,22,opt,name=last_visited,json=lastVisited,proto3" json:"last_visited,omitempty"`
+	// Additional
+	Tags          []string `protobuf:"bytes,30,rep,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Website) Reset() {
 	*x = Website{}
-	mi := &file_model_osint_proto_msgTypes[6]
+	mi := &file_model_osint_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -531,7 +864,7 @@ func (x *Website) String() string {
 func (*Website) ProtoMessage() {}
 
 func (x *Website) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[6]
+	mi := &file_model_osint_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -544,14 +877,35 @@ func (x *Website) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Website.ProtoReflect.Descriptor instead.
 func (*Website) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{6}
+	return file_model_osint_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *Website) GetBase() *EntityBase {
+func (x *Website) GetId() string {
 	if x != nil {
-		return x.Base
+		return x.Id
 	}
-	return nil
+	return ""
+}
+
+func (x *Website) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Website) GetRev() string {
+	if x != nil {
+		return x.Rev
+	}
+	return ""
+}
+
+func (x *Website) GetVisible() bool {
+	if x != nil {
+		return x.Visible
+	}
+	return false
 }
 
 func (x *Website) GetUrl() string {
@@ -582,11 +936,18 @@ func (x *Website) GetDescription() string {
 	return ""
 }
 
-func (x *Website) GetCategory() string {
+func (x *Website) GetFoundedAt() int64 {
 	if x != nil {
-		return x.Category
+		return x.FoundedAt
 	}
-	return ""
+	return 0
+}
+
+func (x *Website) GetDiscoveredAt() int64 {
+	if x != nil {
+		return x.DiscoveredAt
+	}
+	return 0
 }
 
 func (x *Website) GetLastVisited() int64 {
@@ -596,96 +957,317 @@ func (x *Website) GetLastVisited() int64 {
 	return 0
 }
 
-func (x *Website) GetCreatedAt() int64 {
+func (x *Website) GetTags() []string {
 	if x != nil {
-		return x.CreatedAt
+		return x.Tags
+	}
+	return nil
+}
+
+type RelatedWebsite struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Relation      *Relation              `protobuf:"bytes,1,opt,name=relation,proto3" json:"relation,omitempty"`
+	Website       *Website               `protobuf:"bytes,2,opt,name=website,proto3" json:"website,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RelatedWebsite) Reset() {
+	*x = RelatedWebsite{}
+	mi := &file_model_osint_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RelatedWebsite) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RelatedWebsite) ProtoMessage() {}
+
+func (x *RelatedWebsite) ProtoReflect() protoreflect.Message {
+	mi := &file_model_osint_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RelatedWebsite.ProtoReflect.Descriptor instead.
+func (*RelatedWebsite) Descriptor() ([]byte, []int) {
+	return file_model_osint_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *RelatedWebsite) GetRelation() *Relation {
+	if x != nil {
+		return x.Relation
+	}
+	return nil
+}
+
+func (x *RelatedWebsite) GetWebsite() *Website {
+	if x != nil {
+		return x.Website
+	}
+	return nil
+}
+
+type Relation_Value struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Kind:
+	//
+	//	*Relation_Value_StringValue
+	//	*Relation_Value_IntValue
+	//	*Relation_Value_DoubleValue
+	//	*Relation_Value_FloatValue
+	//	*Relation_Value_BoolValue
+	Kind          isRelation_Value_Kind `protobuf_oneof:"kind"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Relation_Value) Reset() {
+	*x = Relation_Value{}
+	mi := &file_model_osint_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Relation_Value) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Relation_Value) ProtoMessage() {}
+
+func (x *Relation_Value) ProtoReflect() protoreflect.Message {
+	mi := &file_model_osint_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Relation_Value.ProtoReflect.Descriptor instead.
+func (*Relation_Value) Descriptor() ([]byte, []int) {
+	return file_model_osint_proto_rawDescGZIP(), []int{0, 1}
+}
+
+func (x *Relation_Value) GetKind() isRelation_Value_Kind {
+	if x != nil {
+		return x.Kind
+	}
+	return nil
+}
+
+func (x *Relation_Value) GetStringValue() string {
+	if x != nil {
+		if x, ok := x.Kind.(*Relation_Value_StringValue); ok {
+			return x.StringValue
+		}
+	}
+	return ""
+}
+
+func (x *Relation_Value) GetIntValue() int64 {
+	if x != nil {
+		if x, ok := x.Kind.(*Relation_Value_IntValue); ok {
+			return x.IntValue
+		}
 	}
 	return 0
 }
 
-func (x *Website) GetUpdatedAt() int64 {
+func (x *Relation_Value) GetDoubleValue() float64 {
 	if x != nil {
-		return x.UpdatedAt
+		if x, ok := x.Kind.(*Relation_Value_DoubleValue); ok {
+			return x.DoubleValue
+		}
 	}
 	return 0
 }
 
-func (x *Website) GetVisible() bool {
+func (x *Relation_Value) GetFloatValue() float32 {
 	if x != nil {
-		return x.Visible
+		if x, ok := x.Kind.(*Relation_Value_FloatValue); ok {
+			return x.FloatValue
+		}
+	}
+	return 0
+}
+
+func (x *Relation_Value) GetBoolValue() bool {
+	if x != nil {
+		if x, ok := x.Kind.(*Relation_Value_BoolValue); ok {
+			return x.BoolValue
+		}
 	}
 	return false
 }
+
+type isRelation_Value_Kind interface {
+	isRelation_Value_Kind()
+}
+
+type Relation_Value_StringValue struct {
+	StringValue string `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3,oneof"`
+}
+
+type Relation_Value_IntValue struct {
+	IntValue int64 `protobuf:"varint,2,opt,name=int_value,json=intValue,proto3,oneof"`
+}
+
+type Relation_Value_DoubleValue struct {
+	DoubleValue float64 `protobuf:"fixed64,3,opt,name=double_value,json=doubleValue,proto3,oneof"`
+}
+
+type Relation_Value_FloatValue struct {
+	FloatValue float32 `protobuf:"fixed32,4,opt,name=float_value,json=floatValue,proto3,oneof"`
+}
+
+type Relation_Value_BoolValue struct {
+	BoolValue bool `protobuf:"varint,5,opt,name=bool_value,json=boolValue,proto3,oneof"`
+}
+
+func (*Relation_Value_StringValue) isRelation_Value_Kind() {}
+
+func (*Relation_Value_IntValue) isRelation_Value_Kind() {}
+
+func (*Relation_Value_DoubleValue) isRelation_Value_Kind() {}
+
+func (*Relation_Value_FloatValue) isRelation_Value_Kind() {}
+
+func (*Relation_Value_BoolValue) isRelation_Value_Kind() {}
 
 var File_model_osint_proto protoreflect.FileDescriptor
 
 const file_model_osint_proto_rawDesc = "" +
 	"\n" +
-	"\x11model/osint.proto\x12\x05model\x1a\x12model/common.proto\"\xce\x02\n" +
-	"\fLocationData\x12\x1a\n" +
-	"\blatitude\x18\x01 \x01(\x02R\blatitude\x12\x1c\n" +
-	"\tlongitude\x18\x02 \x01(\x02R\tlongitude\x12!\n" +
-	"\fcountry_code\x18\x03 \x01(\tR\vcountryCode\x12/\n" +
-	"\x13administrative_area\x18\x04 \x01(\tR\x12administrativeArea\x126\n" +
-	"\x17sub_administrative_area\x18\x05 \x01(\tR\x15subAdministrativeArea\x12\x1a\n" +
-	"\blocality\x18\a \x01(\tR\blocality\x12!\n" +
-	"\fsub_locality\x18\b \x01(\tR\vsubLocality\x12\x18\n" +
-	"\aaddress\x18\t \x01(\tR\aaddress\x12\x1f\n" +
-	"\vpostal_code\x18\n" +
-	" \x01(\x05R\n" +
-	"postalCode\"\xd3\x01\n" +
-	"\bRelation\x12'\n" +
-	"\x04base\x18\x01 \x01(\v2\x13.model.RelationBaseR\x04base\x12\x1e\n" +
+	"\x11model/osint.proto\x12\x05model\x1a\x12model/common.proto\"\x89\x04\n" +
+	"\bRelation\x12\x0f\n" +
+	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x13\n" +
+	"\x04from\x18\x02 \x01(\tR\x05_from\x12\x0f\n" +
+	"\x02to\x18\x03 \x01(\tR\x03_to\x12\x12\n" +
+	"\x04name\x18\n" +
+	" \x01(\tR\x04name\x12\x1e\n" +
 	"\n" +
-	"confidence\x18\x02 \x01(\x05R\n" +
+	"confidence\x18\v \x01(\x05R\n" +
 	"confidence\x12?\n" +
 	"\n" +
-	"attributes\x18\x03 \x03(\v2\x1f.model.Relation.AttributesEntryR\n" +
-	"attributes\x1a=\n" +
+	"attributes\x18\f \x03(\v2\x1f.model.Relation.AttributesEntryR\n" +
+	"attributes\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\x14 \x01(\x03R\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x1aT\n" +
 	"\x0fAttributesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xcb\x01\n" +
-	"\x05Event\x12%\n" +
-	"\x04base\x18\x01 \x01(\v2\x11.model.EntityBaseR\x04base\x121\n" +
-	"\tloacation\x18\x02 \x01(\v2\x13.model.LocationDataR\tloacation\x12\x14\n" +
-	"\x05title\x18\x03 \x01(\tR\x05title\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x1c\n" +
-	"\ttimestamp\x18\x05 \x01(\x03R\ttimestamp\x12\x12\n" +
-	"\x04tags\x18\x06 \x03(\tR\x04tags\"\xab\x01\n" +
-	"\x06Source\x12%\n" +
-	"\x04base\x18\x01 \x01(\v2\x11.model.EntityBaseR\x04base\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x10\n" +
-	"\x03url\x18\x03 \x01(\tR\x03url\x12 \n" +
-	"\vreliability\x18\x04 \x01(\x05R\vreliability\x12\x1e\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12+\n" +
+	"\x05value\x18\x02 \x01(\v2\x15.model.Relation.ValueR\x05value:\x028\x01\x1a\xbc\x01\n" +
+	"\x05Value\x12#\n" +
+	"\fstring_value\x18\x01 \x01(\tH\x00R\vstringValue\x12\x1d\n" +
+	"\tint_value\x18\x02 \x01(\x03H\x00R\bintValue\x12#\n" +
+	"\fdouble_value\x18\x03 \x01(\x01H\x00R\vdoubleValue\x12!\n" +
+	"\vfloat_value\x18\x04 \x01(\x02H\x00R\n" +
+	"floatValue\x12\x1f\n" +
 	"\n" +
-	"monitoring\x18\x05 \x01(\bR\n" +
-	"monitoring\x12\x12\n" +
-	"\x04tags\x18\x06 \x03(\tR\x04tags\"\x93\x01\n" +
-	"\x06Person\x12%\n" +
-	"\x04base\x18\x01 \x01(\v2\x11.model.EntityBaseR\x04base\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04role\x18\x03 \x01(\tR\x04role\x12 \n" +
-	"\vnationality\x18\x04 \x01(\tR\vnationality\x12\x18\n" +
-	"\aaliases\x18\x05 \x03(\tR\aaliases\"w\n" +
-	"\fOrganization\x12%\n" +
-	"\x04base\x18\x01 \x01(\v2\x11.model.EntityBaseR\x04base\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04type\x18\x05 \x01(\tR\x04type\x12\x18\n" +
-	"\afounded\x18\x06 \x01(\x03R\afounded\"\xa9\x02\n" +
-	"\aWebsite\x12%\n" +
-	"\x04base\x18\x01 \x01(\v2\x11.model.EntityBaseR\x04base\x12\x10\n" +
-	"\x03url\x18\x04 \x01(\tR\x03url\x12\x16\n" +
-	"\x06domain\x18\x05 \x01(\tR\x06domain\x12\x14\n" +
-	"\x05title\x18\x06 \x01(\tR\x05title\x12 \n" +
-	"\vdescription\x18\a \x01(\tR\vdescription\x12\x1a\n" +
-	"\bcategory\x18\b \x01(\tR\bcategory\x12!\n" +
-	"\flast_visited\x18\t \x01(\x03R\vlastVisited\x12\x1d\n" +
+	"bool_value\x18\x05 \x01(\bH\x00R\tboolValueB\x06\n" +
+	"\x04kind\"\x95\x02\n" +
+	"\x05Event\x12\x0f\n" +
+	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
+	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
+	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\avisible\x18\x04 \x01(\bR\avisible\x12/\n" +
+	"\blocation\x18\n" +
+	" \x01(\v2\x13.model.LocationDataR\blocation\x12\x14\n" +
+	"\x05title\x18\v \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\f \x01(\tR\vdescription\x12\x1f\n" +
+	"\vhappened_at\x18\x14 \x01(\x03R\n" +
+	"happenedAt\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\n" +
-	" \x01(\x03R\tcreatedAt\x12\x1d\n" +
+	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"_\n" +
+	"\fRelatedEvent\x12+\n" +
+	"\brelation\x18\x01 \x01(\v2\x0f.model.RelationR\brelation\x12\"\n" +
+	"\x05event\x18\x02 \x01(\v2\f.model.EventR\x05event\"\x93\x02\n" +
+	"\x06Source\x12\x0f\n" +
+	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
+	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
+	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\avisible\x18\x04 \x01(\bR\avisible\x12\x12\n" +
+	"\x04name\x18\n" +
+	" \x01(\tR\x04name\x12\x10\n" +
+	"\x03url\x18\v \x01(\tR\x03url\x12 \n" +
+	"\vreliability\x18\f \x01(\x05R\vreliability\x12\x1e\n" +
 	"\n" +
-	"updated_at\x18\v \x01(\x03R\tupdatedAt\x12\x18\n" +
-	"\avisible\x18\f \x01(\bR\avisibleB>Z<github.com/bouncingmaxt/omniscent-library/gen/go/model;modelb\x06proto3"
+	"monitoring\x18\r \x01(\x05R\n" +
+	"monitoring\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\x14 \x01(\x03R\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"c\n" +
+	"\rRelatedSource\x12+\n" +
+	"\brelation\x18\x01 \x01(\v2\x0f.model.RelationR\brelation\x12%\n" +
+	"\x06source\x18\x02 \x01(\v2\r.model.SourceR\x06source\"\x8f\x02\n" +
+	"\x06Person\x12\x0f\n" +
+	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
+	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
+	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\avisible\x18\x04 \x01(\bR\avisible\x12\x12\n" +
+	"\x04name\x18\n" +
+	" \x01(\tR\x04name\x12\x12\n" +
+	"\x04role\x18\v \x01(\tR\x04role\x12 \n" +
+	"\vnationality\x18\f \x01(\tR\vnationality\x12\x1d\n" +
+	"\n" +
+	"birth_date\x18\x14 \x01(\x03R\tbirthDate\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\x12\x18\n" +
+	"\aaliases\x18\x1f \x03(\tR\aaliases\"c\n" +
+	"\rRelatedPerson\x12+\n" +
+	"\brelation\x18\x01 \x01(\v2\x0f.model.RelationR\brelation\x12%\n" +
+	"\x06person\x18\x02 \x01(\v2\r.model.PersonR\x06person\"\x82\x02\n" +
+	"\fOrganization\x12\x0f\n" +
+	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
+	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
+	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\avisible\x18\x04 \x01(\bR\avisible\x12\x12\n" +
+	"\x04name\x18\n" +
+	" \x01(\tR\x04name\x12\x12\n" +
+	"\x04type\x18\v \x01(\tR\x04type\x12\x1d\n" +
+	"\n" +
+	"founded_at\x18\x14 \x01(\x03R\tfoundedAt\x12#\n" +
+	"\rdiscovered_at\x18\x15 \x01(\x03R\fdiscoveredAt\x12!\n" +
+	"\flast_visited\x18\x16 \x01(\x03R\vlastVisited\x12\x12\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"{\n" +
+	"\x13RelatedOrganization\x12+\n" +
+	"\brelation\x18\x01 \x01(\v2\x0f.model.RelationR\brelation\x127\n" +
+	"\forganization\x18\x02 \x01(\v2\x13.model.OrganizationR\forganization\"\xb7\x02\n" +
+	"\aWebsite\x12\x0f\n" +
+	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
+	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
+	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\avisible\x18\x04 \x01(\bR\avisible\x12\x10\n" +
+	"\x03url\x18\n" +
+	" \x01(\tR\x03url\x12\x16\n" +
+	"\x06domain\x18\v \x01(\tR\x06domain\x12\x14\n" +
+	"\x05title\x18\f \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\r \x01(\tR\vdescription\x12\x1d\n" +
+	"\n" +
+	"founded_at\x18\x14 \x01(\x03R\tfoundedAt\x12#\n" +
+	"\rdiscovered_at\x18\x15 \x01(\x03R\fdiscoveredAt\x12!\n" +
+	"\flast_visited\x18\x16 \x01(\x03R\vlastVisited\x12\x12\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"g\n" +
+	"\x0eRelatedWebsite\x12+\n" +
+	"\brelation\x18\x01 \x01(\v2\x0f.model.RelationR\brelation\x12(\n" +
+	"\awebsite\x18\x02 \x01(\v2\x0e.model.WebsiteR\awebsiteB>Z<github.com/bouncingmaxt/omniscent-library/gen/go/model;modelb\x06proto3"
 
 var (
 	file_model_osint_proto_rawDescOnce sync.Once
@@ -699,33 +1281,42 @@ func file_model_osint_proto_rawDescGZIP() []byte {
 	return file_model_osint_proto_rawDescData
 }
 
-var file_model_osint_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_model_osint_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_model_osint_proto_goTypes = []any{
-	(*LocationData)(nil), // 0: model.LocationData
-	(*Relation)(nil),     // 1: model.Relation
-	(*Event)(nil),        // 2: model.Event
-	(*Source)(nil),       // 3: model.Source
-	(*Person)(nil),       // 4: model.Person
-	(*Organization)(nil), // 5: model.Organization
-	(*Website)(nil),      // 6: model.Website
-	nil,                  // 7: model.Relation.AttributesEntry
-	(*RelationBase)(nil), // 8: model.RelationBase
-	(*EntityBase)(nil),   // 9: model.EntityBase
+	(*Relation)(nil),            // 0: model.Relation
+	(*Event)(nil),               // 1: model.Event
+	(*RelatedEvent)(nil),        // 2: model.RelatedEvent
+	(*Source)(nil),              // 3: model.Source
+	(*RelatedSource)(nil),       // 4: model.RelatedSource
+	(*Person)(nil),              // 5: model.Person
+	(*RelatedPerson)(nil),       // 6: model.RelatedPerson
+	(*Organization)(nil),        // 7: model.Organization
+	(*RelatedOrganization)(nil), // 8: model.RelatedOrganization
+	(*Website)(nil),             // 9: model.Website
+	(*RelatedWebsite)(nil),      // 10: model.RelatedWebsite
+	nil,                         // 11: model.Relation.AttributesEntry
+	(*Relation_Value)(nil),      // 12: model.Relation.Value
+	(*LocationData)(nil),        // 13: model.LocationData
 }
 var file_model_osint_proto_depIdxs = []int32{
-	8, // 0: model.Relation.base:type_name -> model.RelationBase
-	7, // 1: model.Relation.attributes:type_name -> model.Relation.AttributesEntry
-	9, // 2: model.Event.base:type_name -> model.EntityBase
-	0, // 3: model.Event.loacation:type_name -> model.LocationData
-	9, // 4: model.Source.base:type_name -> model.EntityBase
-	9, // 5: model.Person.base:type_name -> model.EntityBase
-	9, // 6: model.Organization.base:type_name -> model.EntityBase
-	9, // 7: model.Website.base:type_name -> model.EntityBase
-	8, // [8:8] is the sub-list for method output_type
-	8, // [8:8] is the sub-list for method input_type
-	8, // [8:8] is the sub-list for extension type_name
-	8, // [8:8] is the sub-list for extension extendee
-	0, // [0:8] is the sub-list for field type_name
+	11, // 0: model.Relation.attributes:type_name -> model.Relation.AttributesEntry
+	13, // 1: model.Event.location:type_name -> model.LocationData
+	0,  // 2: model.RelatedEvent.relation:type_name -> model.Relation
+	1,  // 3: model.RelatedEvent.event:type_name -> model.Event
+	0,  // 4: model.RelatedSource.relation:type_name -> model.Relation
+	3,  // 5: model.RelatedSource.source:type_name -> model.Source
+	0,  // 6: model.RelatedPerson.relation:type_name -> model.Relation
+	5,  // 7: model.RelatedPerson.person:type_name -> model.Person
+	0,  // 8: model.RelatedOrganization.relation:type_name -> model.Relation
+	7,  // 9: model.RelatedOrganization.organization:type_name -> model.Organization
+	0,  // 10: model.RelatedWebsite.relation:type_name -> model.Relation
+	9,  // 11: model.RelatedWebsite.website:type_name -> model.Website
+	12, // 12: model.Relation.AttributesEntry.value:type_name -> model.Relation.Value
+	13, // [13:13] is the sub-list for method output_type
+	13, // [13:13] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_model_osint_proto_init() }
@@ -734,13 +1325,20 @@ func file_model_osint_proto_init() {
 		return
 	}
 	file_model_common_proto_init()
+	file_model_osint_proto_msgTypes[12].OneofWrappers = []any{
+		(*Relation_Value_StringValue)(nil),
+		(*Relation_Value_IntValue)(nil),
+		(*Relation_Value_DoubleValue)(nil),
+		(*Relation_Value_FloatValue)(nil),
+		(*Relation_Value_BoolValue)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_osint_proto_rawDesc), len(file_model_osint_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
