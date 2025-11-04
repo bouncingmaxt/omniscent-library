@@ -26,7 +26,7 @@ const (
 // Website messages
 type GetWebsiteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -61,9 +61,9 @@ func (*GetWebsiteRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_website_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetWebsiteRequest) GetId() string {
+func (x *GetWebsiteRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -202,7 +202,7 @@ func (x *CreateWebsiteResponse) GetWebsite() *model.Website {
 
 type UpdateWebsiteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	Website       *model.Website         `protobuf:"bytes,2,opt,name=website,proto3" json:"website,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -238,9 +238,9 @@ func (*UpdateWebsiteRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_website_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateWebsiteRequest) GetId() string {
+func (x *UpdateWebsiteRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -298,7 +298,7 @@ func (x *UpdateWebsiteResponse) GetWebsite() *model.Website {
 
 type DeleteWebsiteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -333,9 +333,9 @@ func (*DeleteWebsiteRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_website_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *DeleteWebsiteRequest) GetId() string {
+func (x *DeleteWebsiteRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -388,30 +388,30 @@ var File_geovision_website_service_proto protoreflect.FileDescriptor
 
 const file_geovision_website_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1fgeovision/website_service.proto\x12\tgeovision\x1a\x11model/osint.proto\x1a\x1cgoogle/api/annotations.proto\"#\n" +
-	"\x11GetWebsiteRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\">\n" +
+	"\x1fgeovision/website_service.proto\x12\tgeovision\x1a\x11model/osint.proto\x1a\x1cgoogle/api/annotations.proto\"%\n" +
+	"\x11GetWebsiteRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\">\n" +
 	"\x12GetWebsiteResponse\x12(\n" +
 	"\awebsite\x18\x01 \x01(\v2\x0e.model.WebsiteR\awebsite\"@\n" +
 	"\x14CreateWebsiteRequest\x12(\n" +
 	"\awebsite\x18\x01 \x01(\v2\x0e.model.WebsiteR\awebsite\"A\n" +
 	"\x15CreateWebsiteResponse\x12(\n" +
-	"\awebsite\x18\x01 \x01(\v2\x0e.model.WebsiteR\awebsite\"P\n" +
-	"\x14UpdateWebsiteRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12(\n" +
+	"\awebsite\x18\x01 \x01(\v2\x0e.model.WebsiteR\awebsite\"R\n" +
+	"\x14UpdateWebsiteRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12(\n" +
 	"\awebsite\x18\x02 \x01(\v2\x0e.model.WebsiteR\awebsite\"A\n" +
 	"\x15UpdateWebsiteResponse\x12(\n" +
-	"\awebsite\x18\x01 \x01(\v2\x0e.model.WebsiteR\awebsite\"&\n" +
-	"\x14DeleteWebsiteRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"1\n" +
+	"\awebsite\x18\x01 \x01(\v2\x0e.model.WebsiteR\awebsite\"(\n" +
+	"\x14DeleteWebsiteRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"1\n" +
 	"\x15DeleteWebsiteResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xd0\x03\n" +
-	"\x0eWebsiteService\x12d\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xd3\x03\n" +
+	"\x0eWebsiteService\x12e\n" +
 	"\n" +
-	"GetWebsite\x12\x1c.geovision.GetWebsiteRequest\x1a\x1d.geovision.GetWebsiteResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/websites/{id}\x12q\n" +
-	"\rCreateWebsite\x12\x1f.geovision.CreateWebsiteRequest\x1a .geovision.CreateWebsiteResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\awebsite\"\f/v1/websites\x12v\n" +
-	"\rUpdateWebsite\x12\x1f.geovision.UpdateWebsiteRequest\x1a .geovision.UpdateWebsiteResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\awebsite\x1a\x11/v1/websites/{id}\x12m\n" +
-	"\rDeleteWebsite\x12\x1f.geovision.DeleteWebsiteRequest\x1a .geovision.DeleteWebsiteResponse\"\x19\x82\xd3\xe4\x93\x02\x13*\x11/v1/websites/{id}BFZDgithub.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovisionb\x06proto3"
+	"GetWebsite\x12\x1c.geovision.GetWebsiteRequest\x1a\x1d.geovision.GetWebsiteResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/v1/websites/{key}\x12q\n" +
+	"\rCreateWebsite\x12\x1f.geovision.CreateWebsiteRequest\x1a .geovision.CreateWebsiteResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\awebsite\"\f/v1/websites\x12w\n" +
+	"\rUpdateWebsite\x12\x1f.geovision.UpdateWebsiteRequest\x1a .geovision.UpdateWebsiteResponse\"#\x82\xd3\xe4\x93\x02\x1d:\awebsite\x1a\x12/v1/websites/{key}\x12n\n" +
+	"\rDeleteWebsite\x12\x1f.geovision.DeleteWebsiteRequest\x1a .geovision.DeleteWebsiteResponse\"\x1a\x82\xd3\xe4\x93\x02\x14*\x12/v1/websites/{key}BFZDgithub.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovisionb\x06proto3"
 
 var (
 	file_geovision_website_service_proto_rawDescOnce sync.Once

@@ -26,7 +26,7 @@ const (
 // Person messages
 type GetPersonRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -61,9 +61,9 @@ func (*GetPersonRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_person_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetPersonRequest) GetId() string {
+func (x *GetPersonRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -202,7 +202,7 @@ func (x *CreatePersonResponse) GetPerson() *model.Person {
 
 type UpdatePersonRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	Person        *model.Person          `protobuf:"bytes,2,opt,name=person,proto3" json:"person,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -238,9 +238,9 @@ func (*UpdatePersonRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_person_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdatePersonRequest) GetId() string {
+func (x *UpdatePersonRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -298,7 +298,7 @@ func (x *UpdatePersonResponse) GetPerson() *model.Person {
 
 type DeletePersonRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -333,9 +333,9 @@ func (*DeletePersonRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_person_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *DeletePersonRequest) GetId() string {
+func (x *DeletePersonRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -388,29 +388,29 @@ var File_geovision_person_service_proto protoreflect.FileDescriptor
 
 const file_geovision_person_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1egeovision/person_service.proto\x12\tgeovision\x1a\x11model/osint.proto\x1a\x1cgoogle/api/annotations.proto\"\"\n" +
-	"\x10GetPersonRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\":\n" +
+	"\x1egeovision/person_service.proto\x12\tgeovision\x1a\x11model/osint.proto\x1a\x1cgoogle/api/annotations.proto\"$\n" +
+	"\x10GetPersonRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\":\n" +
 	"\x11GetPersonResponse\x12%\n" +
 	"\x06person\x18\x01 \x01(\v2\r.model.PersonR\x06person\"<\n" +
 	"\x13CreatePersonRequest\x12%\n" +
 	"\x06person\x18\x01 \x01(\v2\r.model.PersonR\x06person\"=\n" +
 	"\x14CreatePersonResponse\x12%\n" +
-	"\x06person\x18\x01 \x01(\v2\r.model.PersonR\x06person\"L\n" +
-	"\x13UpdatePersonRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12%\n" +
+	"\x06person\x18\x01 \x01(\v2\r.model.PersonR\x06person\"N\n" +
+	"\x13UpdatePersonRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12%\n" +
 	"\x06person\x18\x02 \x01(\v2\r.model.PersonR\x06person\"=\n" +
 	"\x14UpdatePersonResponse\x12%\n" +
-	"\x06person\x18\x01 \x01(\v2\r.model.PersonR\x06person\"%\n" +
-	"\x13DeletePersonRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"0\n" +
+	"\x06person\x18\x01 \x01(\v2\r.model.PersonR\x06person\"'\n" +
+	"\x13DeletePersonRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"0\n" +
 	"\x14DeletePersonResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xbd\x03\n" +
-	"\rPersonService\x12`\n" +
-	"\tGetPerson\x12\x1b.geovision.GetPersonRequest\x1a\x1c.geovision.GetPersonResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/persons/{id}\x12l\n" +
-	"\fCreatePerson\x12\x1e.geovision.CreatePersonRequest\x1a\x1f.geovision.CreatePersonResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x06person\"\v/v1/persons\x12q\n" +
-	"\fUpdatePerson\x12\x1e.geovision.UpdatePersonRequest\x1a\x1f.geovision.UpdatePersonResponse\" \x82\xd3\xe4\x93\x02\x1a:\x06person\x1a\x10/v1/persons/{id}\x12i\n" +
-	"\fDeletePerson\x12\x1e.geovision.DeletePersonRequest\x1a\x1f.geovision.DeletePersonResponse\"\x18\x82\xd3\xe4\x93\x02\x12*\x10/v1/persons/{id}BFZDgithub.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovisionb\x06proto3"
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc0\x03\n" +
+	"\rPersonService\x12a\n" +
+	"\tGetPerson\x12\x1b.geovision.GetPersonRequest\x1a\x1c.geovision.GetPersonResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/persons/{key}\x12l\n" +
+	"\fCreatePerson\x12\x1e.geovision.CreatePersonRequest\x1a\x1f.geovision.CreatePersonResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x06person\"\v/v1/persons\x12r\n" +
+	"\fUpdatePerson\x12\x1e.geovision.UpdatePersonRequest\x1a\x1f.geovision.UpdatePersonResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x06person\x1a\x11/v1/persons/{key}\x12j\n" +
+	"\fDeletePerson\x12\x1e.geovision.DeletePersonRequest\x1a\x1f.geovision.DeletePersonResponse\"\x19\x82\xd3\xe4\x93\x02\x13*\x11/v1/persons/{key}BFZDgithub.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovisionb\x06proto3"
 
 var (
 	file_geovision_person_service_proto_rawDescOnce sync.Once

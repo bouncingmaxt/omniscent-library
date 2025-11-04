@@ -99,7 +99,7 @@
         ]
       }
     },
-    "/v1/events/{id}": {
+    "/v1/events/{key}": {
       "get": {
         "operationId": "EventService_GetEvent",
         "responses": {
@@ -118,7 +118,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -146,7 +146,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -174,7 +174,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -193,7 +193,7 @@
         ]
       }
     },
-    "/v1/events/{id}/related-events": {
+    "/v1/events/{key}/related-events": {
       "get": {
         "operationId": "EventService_GetRelatedEvents",
         "responses": {
@@ -212,7 +212,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -255,7 +255,7 @@
         ]
       }
     },
-    "/v1/organizations/{id}": {
+    "/v1/organizations/{key}": {
       "get": {
         "operationId": "OrganizationService_GetOrganization",
         "responses": {
@@ -274,7 +274,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -302,7 +302,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -330,7 +330,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -381,7 +381,7 @@
         ]
       }
     },
-    "/v1/persons/{id}": {
+    "/v1/persons/{key}": {
       "get": {
         "operationId": "PersonService_GetPerson",
         "responses": {
@@ -400,7 +400,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -428,7 +428,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -456,7 +456,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -605,7 +605,7 @@
         ]
       }
     },
-    "/v1/sources/{id}": {
+    "/v1/sources/{key}": {
       "get": {
         "operationId": "SourceService_GetSource",
         "responses": {
@@ -624,7 +624,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -652,7 +652,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -680,7 +680,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -731,7 +731,7 @@
         ]
       }
     },
-    "/v1/websites/{id}": {
+    "/v1/websites/{key}": {
       "get": {
         "operationId": "WebsiteService_GetWebsite",
         "responses": {
@@ -750,7 +750,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -778,7 +778,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"
@@ -806,7 +806,7 @@
         },
         "parameters": [
           {
-            "name": "id",
+            "name": "key",
             "in": "path",
             "required": true,
             "type": "string"

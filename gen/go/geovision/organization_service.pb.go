@@ -26,7 +26,7 @@ const (
 // Organization messages
 type GetOrganizationRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -61,9 +61,9 @@ func (*GetOrganizationRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_organization_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetOrganizationRequest) GetId() string {
+func (x *GetOrganizationRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -202,7 +202,7 @@ func (x *CreateOrganizationResponse) GetOrganization() *model.Organization {
 
 type UpdateOrganizationRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	Organization  *model.Organization    `protobuf:"bytes,2,opt,name=organization,proto3" json:"organization,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -238,9 +238,9 @@ func (*UpdateOrganizationRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_organization_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateOrganizationRequest) GetId() string {
+func (x *UpdateOrganizationRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -298,7 +298,7 @@ func (x *UpdateOrganizationResponse) GetOrganization() *model.Organization {
 
 type DeleteOrganizationRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -333,9 +333,9 @@ func (*DeleteOrganizationRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_organization_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *DeleteOrganizationRequest) GetId() string {
+func (x *DeleteOrganizationRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -388,29 +388,29 @@ var File_geovision_organization_service_proto protoreflect.FileDescriptor
 
 const file_geovision_organization_service_proto_rawDesc = "" +
 	"\n" +
-	"$geovision/organization_service.proto\x12\tgeovision\x1a\x11model/osint.proto\x1a\x1cgoogle/api/annotations.proto\"(\n" +
-	"\x16GetOrganizationRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"R\n" +
+	"$geovision/organization_service.proto\x12\tgeovision\x1a\x11model/osint.proto\x1a\x1cgoogle/api/annotations.proto\"*\n" +
+	"\x16GetOrganizationRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"R\n" +
 	"\x17GetOrganizationResponse\x127\n" +
 	"\forganization\x18\x01 \x01(\v2\x13.model.OrganizationR\forganization\"T\n" +
 	"\x19CreateOrganizationRequest\x127\n" +
 	"\forganization\x18\x01 \x01(\v2\x13.model.OrganizationR\forganization\"U\n" +
 	"\x1aCreateOrganizationResponse\x127\n" +
-	"\forganization\x18\x01 \x01(\v2\x13.model.OrganizationR\forganization\"d\n" +
-	"\x19UpdateOrganizationRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x127\n" +
+	"\forganization\x18\x01 \x01(\v2\x13.model.OrganizationR\forganization\"f\n" +
+	"\x19UpdateOrganizationRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x127\n" +
 	"\forganization\x18\x02 \x01(\v2\x13.model.OrganizationR\forganization\"U\n" +
 	"\x1aUpdateOrganizationResponse\x127\n" +
-	"\forganization\x18\x01 \x01(\v2\x13.model.OrganizationR\forganization\"+\n" +
-	"\x19DeleteOrganizationRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"6\n" +
+	"\forganization\x18\x01 \x01(\v2\x13.model.OrganizationR\forganization\"-\n" +
+	"\x19DeleteOrganizationRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"6\n" +
 	"\x1aDeleteOrganizationResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb2\x04\n" +
-	"\x13OrganizationService\x12x\n" +
-	"\x0fGetOrganization\x12!.geovision.GetOrganizationRequest\x1a\".geovision.GetOrganizationResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/v1/organizations/{id}\x12\x8a\x01\n" +
-	"\x12CreateOrganization\x12$.geovision.CreateOrganizationRequest\x1a%.geovision.CreateOrganizationResponse\"'\x82\xd3\xe4\x93\x02!:\forganization\"\x11/v1/organizations\x12\x8f\x01\n" +
-	"\x12UpdateOrganization\x12$.geovision.UpdateOrganizationRequest\x1a%.geovision.UpdateOrganizationResponse\",\x82\xd3\xe4\x93\x02&:\forganization\x1a\x16/v1/organizations/{id}\x12\x81\x01\n" +
-	"\x12DeleteOrganization\x12$.geovision.DeleteOrganizationRequest\x1a%.geovision.DeleteOrganizationResponse\"\x1e\x82\xd3\xe4\x93\x02\x18*\x16/v1/organizations/{id}BFZDgithub.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovisionb\x06proto3"
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb5\x04\n" +
+	"\x13OrganizationService\x12y\n" +
+	"\x0fGetOrganization\x12!.geovision.GetOrganizationRequest\x1a\".geovision.GetOrganizationResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/v1/organizations/{key}\x12\x8a\x01\n" +
+	"\x12CreateOrganization\x12$.geovision.CreateOrganizationRequest\x1a%.geovision.CreateOrganizationResponse\"'\x82\xd3\xe4\x93\x02!:\forganization\"\x11/v1/organizations\x12\x90\x01\n" +
+	"\x12UpdateOrganization\x12$.geovision.UpdateOrganizationRequest\x1a%.geovision.UpdateOrganizationResponse\"-\x82\xd3\xe4\x93\x02':\forganization\x1a\x17/v1/organizations/{key}\x12\x82\x01\n" +
+	"\x12DeleteOrganization\x12$.geovision.DeleteOrganizationRequest\x1a%.geovision.DeleteOrganizationResponse\"\x1f\x82\xd3\xe4\x93\x02\x19*\x17/v1/organizations/{key}BFZDgithub.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovisionb\x06proto3"
 
 var (
 	file_geovision_organization_service_proto_rawDescOnce sync.Once

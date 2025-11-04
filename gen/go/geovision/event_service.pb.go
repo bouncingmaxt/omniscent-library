@@ -122,7 +122,7 @@ func (x *GetEventsResponse) GetEvents() []*model.Event {
 
 type GetEventRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -157,9 +157,9 @@ func (*GetEventRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetEventRequest) GetId() string {
+func (x *GetEventRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -242,7 +242,7 @@ func (x *GetEventResponse) GetWebsites() []*model.RelatedWebsite {
 
 type GetRelatedEventsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -277,9 +277,9 @@ func (*GetRelatedEventsRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetRelatedEventsRequest) GetId() string {
+func (x *GetRelatedEventsRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -418,7 +418,7 @@ func (x *CreateEventResponse) GetEvent() *model.Event {
 
 type UpdateEventRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	Event         *model.Event           `protobuf:"bytes,2,opt,name=event,proto3" json:"event,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -454,9 +454,9 @@ func (*UpdateEventRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *UpdateEventRequest) GetId() string {
+func (x *UpdateEventRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -514,7 +514,7 @@ func (x *UpdateEventResponse) GetEvent() *model.Event {
 
 type DeleteEventRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -549,9 +549,9 @@ func (*DeleteEventRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *DeleteEventRequest) GetId() string {
+func (x *DeleteEventRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -610,41 +610,41 @@ const file_geovision_event_service_proto_rawDesc = "" +
 	"start_time\x18\x01 \x01(\x03R\tstartTime\x12\x19\n" +
 	"\bend_time\x18\x02 \x01(\x03R\aendTime\"9\n" +
 	"\x11GetEventsResponse\x12$\n" +
-	"\x06events\x18\x01 \x03(\v2\f.model.EventR\x06events\"!\n" +
-	"\x0fGetEventRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\x8b\x02\n" +
+	"\x06events\x18\x01 \x03(\v2\f.model.EventR\x06events\"#\n" +
+	"\x0fGetEventRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"\x8b\x02\n" +
 	"\x10GetEventResponse\x12\"\n" +
 	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\x12.\n" +
 	"\asources\x18\x02 \x03(\v2\x14.model.RelatedSourceR\asources\x12.\n" +
 	"\apersons\x18\x03 \x03(\v2\x14.model.RelatedPersonR\apersons\x12@\n" +
 	"\rorganizations\x18\x04 \x03(\v2\x1a.model.RelatedOrganizationR\rorganizations\x121\n" +
-	"\bwebsites\x18\x05 \x03(\v2\x15.model.RelatedWebsiteR\bwebsites\")\n" +
-	"\x17GetRelatedEventsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"G\n" +
+	"\bwebsites\x18\x05 \x03(\v2\x15.model.RelatedWebsiteR\bwebsites\"+\n" +
+	"\x17GetRelatedEventsRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"G\n" +
 	"\x18GetRelatedEventsResponse\x12+\n" +
 	"\x06events\x18\x01 \x03(\v2\x13.model.RelatedEventR\x06events\"8\n" +
 	"\x12CreateEventRequest\x12\"\n" +
 	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\"9\n" +
 	"\x13CreateEventResponse\x12\"\n" +
-	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\"H\n" +
-	"\x12UpdateEventRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\"\n" +
+	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\"J\n" +
+	"\x12UpdateEventRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\"\n" +
 	"\x05event\x18\x02 \x01(\v2\f.model.EventR\x05event\"9\n" +
 	"\x13UpdateEventResponse\x12\"\n" +
-	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\"$\n" +
-	"\x12DeleteEventRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"/\n" +
+	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\"&\n" +
+	"\x12DeleteEventRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"/\n" +
 	"\x13DeleteEventResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2\x8c\x05\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage2\x90\x05\n" +
 	"\fEventService\x12Z\n" +
 	"\tGetEvents\x12\x1b.geovision.GetEventsRequest\x1a\x1c.geovision.GetEventsResponse\"\x12\x82\xd3\xe4\x93\x02\f\x12\n" +
-	"/v1/events\x12\\\n" +
-	"\bGetEvent\x12\x1a.geovision.GetEventRequest\x1a\x1b.geovision.GetEventResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/v1/events/{id}\x12\x83\x01\n" +
-	"\x10GetRelatedEvents\x12\".geovision.GetRelatedEventsRequest\x1a#.geovision.GetRelatedEventsResponse\"&\x82\xd3\xe4\x93\x02 \x12\x1e/v1/events/{id}/related-events\x12g\n" +
+	"/v1/events\x12]\n" +
+	"\bGetEvent\x12\x1a.geovision.GetEventRequest\x1a\x1b.geovision.GetEventResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/events/{key}\x12\x84\x01\n" +
+	"\x10GetRelatedEvents\x12\".geovision.GetRelatedEventsRequest\x1a#.geovision.GetRelatedEventsResponse\"'\x82\xd3\xe4\x93\x02!\x12\x1f/v1/events/{key}/related-events\x12g\n" +
 	"\vCreateEvent\x12\x1d.geovision.CreateEventRequest\x1a\x1e.geovision.CreateEventResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x05event\"\n" +
-	"/v1/events\x12l\n" +
-	"\vUpdateEvent\x12\x1d.geovision.UpdateEventRequest\x1a\x1e.geovision.UpdateEventResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x05event\x1a\x0f/v1/events/{id}\x12e\n" +
-	"\vDeleteEvent\x12\x1d.geovision.DeleteEventRequest\x1a\x1e.geovision.DeleteEventResponse\"\x17\x82\xd3\xe4\x93\x02\x11*\x0f/v1/events/{id}BFZDgithub.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovisionb\x06proto3"
+	"/v1/events\x12m\n" +
+	"\vUpdateEvent\x12\x1d.geovision.UpdateEventRequest\x1a\x1e.geovision.UpdateEventResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x05event\x1a\x10/v1/events/{key}\x12f\n" +
+	"\vDeleteEvent\x12\x1d.geovision.DeleteEventRequest\x1a\x1e.geovision.DeleteEventResponse\"\x18\x82\xd3\xe4\x93\x02\x12*\x10/v1/events/{key}BFZDgithub.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovisionb\x06proto3"
 
 var (
 	file_geovision_event_service_proto_rawDescOnce sync.Once

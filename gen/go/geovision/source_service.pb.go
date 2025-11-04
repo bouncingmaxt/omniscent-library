@@ -26,7 +26,7 @@ const (
 // Source messages
 type GetSourceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -61,9 +61,9 @@ func (*GetSourceRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_source_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetSourceRequest) GetId() string {
+func (x *GetSourceRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -202,7 +202,7 @@ func (x *CreateSourceResponse) GetSource() *model.Source {
 
 type UpdateSourceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	Source        *model.Source          `protobuf:"bytes,2,opt,name=source,proto3" json:"source,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -238,9 +238,9 @@ func (*UpdateSourceRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_source_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateSourceRequest) GetId() string {
+func (x *UpdateSourceRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -298,7 +298,7 @@ func (x *UpdateSourceResponse) GetSource() *model.Source {
 
 type DeleteSourceRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -333,9 +333,9 @@ func (*DeleteSourceRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_source_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *DeleteSourceRequest) GetId() string {
+func (x *DeleteSourceRequest) GetKey() string {
 	if x != nil {
-		return x.Id
+		return x.Key
 	}
 	return ""
 }
@@ -388,29 +388,29 @@ var File_geovision_source_service_proto protoreflect.FileDescriptor
 
 const file_geovision_source_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1egeovision/source_service.proto\x12\tgeovision\x1a\x11model/osint.proto\x1a\x1cgoogle/api/annotations.proto\"\"\n" +
-	"\x10GetSourceRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\":\n" +
+	"\x1egeovision/source_service.proto\x12\tgeovision\x1a\x11model/osint.proto\x1a\x1cgoogle/api/annotations.proto\"$\n" +
+	"\x10GetSourceRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\":\n" +
 	"\x11GetSourceResponse\x12%\n" +
 	"\x06source\x18\x01 \x01(\v2\r.model.SourceR\x06source\"<\n" +
 	"\x13CreateSourceRequest\x12%\n" +
 	"\x06source\x18\x01 \x01(\v2\r.model.SourceR\x06source\"=\n" +
 	"\x14CreateSourceResponse\x12%\n" +
-	"\x06source\x18\x01 \x01(\v2\r.model.SourceR\x06source\"L\n" +
-	"\x13UpdateSourceRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12%\n" +
+	"\x06source\x18\x01 \x01(\v2\r.model.SourceR\x06source\"N\n" +
+	"\x13UpdateSourceRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12%\n" +
 	"\x06source\x18\x02 \x01(\v2\r.model.SourceR\x06source\"=\n" +
 	"\x14UpdateSourceResponse\x12%\n" +
-	"\x06source\x18\x01 \x01(\v2\r.model.SourceR\x06source\"%\n" +
-	"\x13DeleteSourceRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"0\n" +
+	"\x06source\x18\x01 \x01(\v2\r.model.SourceR\x06source\"'\n" +
+	"\x13DeleteSourceRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"0\n" +
 	"\x14DeleteSourceResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xbd\x03\n" +
-	"\rSourceService\x12`\n" +
-	"\tGetSource\x12\x1b.geovision.GetSourceRequest\x1a\x1c.geovision.GetSourceResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/sources/{id}\x12l\n" +
-	"\fCreateSource\x12\x1e.geovision.CreateSourceRequest\x1a\x1f.geovision.CreateSourceResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x06source\"\v/v1/sources\x12q\n" +
-	"\fUpdateSource\x12\x1e.geovision.UpdateSourceRequest\x1a\x1f.geovision.UpdateSourceResponse\" \x82\xd3\xe4\x93\x02\x1a:\x06source\x1a\x10/v1/sources/{id}\x12i\n" +
-	"\fDeleteSource\x12\x1e.geovision.DeleteSourceRequest\x1a\x1f.geovision.DeleteSourceResponse\"\x18\x82\xd3\xe4\x93\x02\x12*\x10/v1/sources/{id}BFZDgithub.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovisionb\x06proto3"
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc0\x03\n" +
+	"\rSourceService\x12a\n" +
+	"\tGetSource\x12\x1b.geovision.GetSourceRequest\x1a\x1c.geovision.GetSourceResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/sources/{key}\x12l\n" +
+	"\fCreateSource\x12\x1e.geovision.CreateSourceRequest\x1a\x1f.geovision.CreateSourceResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x06source\"\v/v1/sources\x12r\n" +
+	"\fUpdateSource\x12\x1e.geovision.UpdateSourceRequest\x1a\x1f.geovision.UpdateSourceResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x06source\x1a\x11/v1/sources/{key}\x12j\n" +
+	"\fDeleteSource\x12\x1e.geovision.DeleteSourceRequest\x1a\x1f.geovision.DeleteSourceResponse\"\x19\x82\xd3\xe4\x93\x02\x13*\x11/v1/sources/{key}BFZDgithub.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovisionb\x06proto3"
 
 var (
 	file_geovision_source_service_proto_rawDescOnce sync.Once

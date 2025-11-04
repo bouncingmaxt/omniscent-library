@@ -11,7 +11,7 @@ option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/geovision;
 service OrganizationService {
   rpc GetOrganization(GetOrganizationRequest) returns (GetOrganizationResponse) {
     option (google.api.http) = {
-      get: "/v1/organizations/{id}"
+      get: "/v1/organizations/{key}"
     };
   }
 
@@ -24,21 +24,21 @@ service OrganizationService {
 
   rpc UpdateOrganization(UpdateOrganizationRequest) returns (UpdateOrganizationResponse) {
     option (google.api.http) = {
-      put: "/v1/organizations/{id}"
+      put: "/v1/organizations/{key}"
       body: "organization"
     };
   }
 
   rpc DeleteOrganization(DeleteOrganizationRequest) returns (DeleteOrganizationResponse) {
     option (google.api.http) = {
-      delete: "/v1/organizations/{id}"
+      delete: "/v1/organizations/{key}"
     };
   }
 }
 
 // Organization messages
 message GetOrganizationRequest {
-  string id = 1;
+  string key = 1;
 }
 
 message GetOrganizationResponse {
@@ -54,7 +54,7 @@ message CreateOrganizationResponse {
 }
 
 message UpdateOrganizationRequest {
-  string id = 1;
+  string key = 1;
   model.Organization organization = 2;
 }
 
@@ -63,7 +63,7 @@ message UpdateOrganizationResponse {
 }
 
 message DeleteOrganizationRequest {
-  string id = 1;
+  string key = 1;
 }
 
 message DeleteOrganizationResponse {

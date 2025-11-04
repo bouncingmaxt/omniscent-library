@@ -11,7 +11,7 @@ option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/geovision;
 service WebsiteService {
   rpc GetWebsite(GetWebsiteRequest) returns (GetWebsiteResponse) {
     option (google.api.http) = {
-      get: "/v1/websites/{id}"
+      get: "/v1/websites/{key}"
     };
   }
 
@@ -24,21 +24,21 @@ service WebsiteService {
 
   rpc UpdateWebsite(UpdateWebsiteRequest) returns (UpdateWebsiteResponse) {
     option (google.api.http) = {
-      put: "/v1/websites/{id}"
+      put: "/v1/websites/{key}"
       body: "website"
     };
   }
 
   rpc DeleteWebsite(DeleteWebsiteRequest) returns (DeleteWebsiteResponse) {
     option (google.api.http) = {
-      delete: "/v1/websites/{id}"
+      delete: "/v1/websites/{key}"
     };
   }
 }
 
 // Website messages
 message GetWebsiteRequest {
-  string id = 1;
+  string key = 1;
 }
 
 message GetWebsiteResponse {
@@ -54,7 +54,7 @@ message CreateWebsiteResponse {
 }
 
 message UpdateWebsiteRequest {
-  string id = 1;
+  string key = 1;
   model.Website website = 2;
 }
 
@@ -63,7 +63,7 @@ message UpdateWebsiteResponse {
 }
 
 message DeleteWebsiteRequest {
-  string id = 1;
+  string key = 1;
 }
 
 message DeleteWebsiteResponse {

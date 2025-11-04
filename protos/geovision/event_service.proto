@@ -17,13 +17,13 @@ service EventService {
 
   rpc GetEvent(GetEventRequest) returns (GetEventResponse) {
     option (google.api.http) = {
-      get: "/v1/events/{id}"
+      get: "/v1/events/{key}"
     };
   }
 
   rpc GetRelatedEvents(GetRelatedEventsRequest) returns (GetRelatedEventsResponse) {
     option (google.api.http) = {
-      get: "/v1/events/{id}/related-events"
+      get: "/v1/events/{key}/related-events"
     };
   }
 
@@ -36,14 +36,14 @@ service EventService {
 
   rpc UpdateEvent(UpdateEventRequest) returns (UpdateEventResponse) {
     option (google.api.http) = {
-      put: "/v1/events/{id}"
+      put: "/v1/events/{key}"
       body: "event"
     };
   }
 
   rpc DeleteEvent(DeleteEventRequest) returns (DeleteEventResponse) {
     option (google.api.http) = {
-      delete: "/v1/events/{id}"
+      delete: "/v1/events/{key}"
     };
   }
 }
@@ -59,7 +59,7 @@ message GetEventsResponse {
 }
 
 message GetEventRequest {
-  string id = 1;
+  string key = 1;
 }
 
 message GetEventResponse {
@@ -71,7 +71,7 @@ message GetEventResponse {
 }
 
 message GetRelatedEventsRequest {
-  string id = 1;
+  string key = 1;
 }
 
 message GetRelatedEventsResponse {
@@ -87,7 +87,7 @@ message CreateEventResponse {
 }
 
 message UpdateEventRequest {
-  string id = 1;
+  string key = 1;
   model.Event event = 2;
 }
 
@@ -96,7 +96,7 @@ message UpdateEventResponse {
 }
 
 message DeleteEventRequest {
-  string id = 1;
+  string key = 1;
 }
 
 message DeleteEventResponse {

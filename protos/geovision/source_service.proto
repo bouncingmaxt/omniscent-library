@@ -11,7 +11,7 @@ option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/geovision;
 service SourceService {
   rpc GetSource(GetSourceRequest) returns (GetSourceResponse) {
     option (google.api.http) = {
-      get: "/v1/sources/{id}"
+      get: "/v1/sources/{key}"
     };
   }
 
@@ -24,21 +24,21 @@ service SourceService {
 
   rpc UpdateSource(UpdateSourceRequest) returns (UpdateSourceResponse) {
     option (google.api.http) = {
-      put: "/v1/sources/{id}"
+      put: "/v1/sources/{key}"
       body: "source"
     };
   }
 
   rpc DeleteSource(DeleteSourceRequest) returns (DeleteSourceResponse) {
     option (google.api.http) = {
-      delete: "/v1/sources/{id}"
+      delete: "/v1/sources/{key}"
     };
   }
 }
 
 // Source messages
 message GetSourceRequest {
-  string id = 1;
+  string key = 1;
 }
 
 message GetSourceResponse {
@@ -54,7 +54,7 @@ message CreateSourceResponse {
 }
 
 message UpdateSourceRequest {
-  string id = 1;
+  string key = 1;
   model.Source source = 2;
 }
 
@@ -63,7 +63,7 @@ message UpdateSourceResponse {
 }
 
 message DeleteSourceRequest {
-  string id = 1;
+  string key = 1;
 }
 
 message DeleteSourceResponse {

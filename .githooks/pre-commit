@@ -3,6 +3,19 @@
 # Git pre-commit hook that runs make commands before allowing commits
 # This ensures generated code is up-to-date before committing
 
+# Ensure Go binaries are in PATH
+# Add common Go binary paths to PATH
+export PATH=$PATH:$HOME/go/bin:/usr/local/go/bin
+
+# Also try to source the user's profile to get their PATH settings
+if [ -f ~/.bash_profile ]; then
+    source ~/.bash_profile 2>/dev/null
+elif [ -f ~/.zshrc ]; then
+    source ~/.zshrc 2>/dev/null
+elif [ -f ~/.profile ]; then
+    source ~/.profile 2>/dev/null
+fi
+
 echo "🚀 Running pre-commit checks..."
 
 # Run make commands to ensure generated code is current
