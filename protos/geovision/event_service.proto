@@ -100,5 +100,4 @@ message DeleteEventRequest {
 }
 
 message DeleteEventResponse {
-  string message = 1;
 }

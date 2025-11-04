@@ -67,5 +67,4 @@ message DeleteOrganizationRequest {
 }
 
 message DeleteOrganizationResponse {
-  bool success = 1;
 }

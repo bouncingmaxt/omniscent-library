@@ -342,7 +342,6 @@ func (x *DeleteOrganizationRequest) GetKey() string {
 
 type DeleteOrganizationResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -377,13 +376,6 @@ func (*DeleteOrganizationResponse) Descriptor() ([]byte, []int) {
 	return file_geovision_organization_service_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *DeleteOrganizationResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
 var File_geovision_organization_service_proto protoreflect.FileDescriptor
 
 const file_geovision_organization_service_proto_rawDesc = "" +
@@ -403,9 +395,8 @@ const file_geovision_organization_service_proto_rawDesc = "" +
 	"\x1aUpdateOrganizationResponse\x127\n" +
 	"\forganization\x18\x01 \x01(\v2\x13.model.OrganizationR\forganization\"-\n" +
 	"\x19DeleteOrganizationRequest\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\"6\n" +
-	"\x1aDeleteOrganizationResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb5\x04\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"\x1c\n" +
+	"\x1aDeleteOrganizationResponse2\xb5\x04\n" +
 	"\x13OrganizationService\x12y\n" +
 	"\x0fGetOrganization\x12!.geovision.GetOrganizationRequest\x1a\".geovision.GetOrganizationResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/v1/organizations/{key}\x12\x8a\x01\n" +
 	"\x12CreateOrganization\x12$.geovision.CreateOrganizationRequest\x1a%.geovision.CreateOrganizationResponse\"'\x82\xd3\xe4\x93\x02!:\forganization\"\x11/v1/organizations\x12\x90\x01\n" +

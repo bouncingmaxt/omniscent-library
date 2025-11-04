@@ -254,7 +254,6 @@ func (x *DeleteRelationshipRequest) GetId() string {
 
 type DeleteRelationshipResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -289,13 +288,6 @@ func (*DeleteRelationshipResponse) Descriptor() ([]byte, []int) {
 	return file_geovision_relationship_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *DeleteRelationshipResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
 var File_geovision_relationship_service_proto protoreflect.FileDescriptor
 
 const file_geovision_relationship_service_proto_rawDesc = "" +
@@ -311,9 +303,8 @@ const file_geovision_relationship_service_proto_rawDesc = "" +
 	"\x1aUpdateRelationshipResponse\x123\n" +
 	"\frelationship\x18\x01 \x01(\v2\x0f.model.RelationR\frelationship\"+\n" +
 	"\x19DeleteRelationshipRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"6\n" +
-	"\x1aDeleteRelationshipResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb8\x03\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\x1c\n" +
+	"\x1aDeleteRelationshipResponse2\xb8\x03\n" +
 	"\x13RelationshipService\x12\x8a\x01\n" +
 	"\x12CreateRelationship\x12$.geovision.CreateRelationshipRequest\x1a%.geovision.CreateRelationshipResponse\"'\x82\xd3\xe4\x93\x02!:\frelationship\"\x11/v1/relationships\x12\x8f\x01\n" +
 	"\x12UpdateRelationship\x12$.geovision.UpdateRelationshipRequest\x1a%.geovision.UpdateRelationshipResponse\",\x82\xd3\xe4\x93\x02&:\frelationship\x1a\x16/v1/relationships/{id}\x12\x81\x01\n" +

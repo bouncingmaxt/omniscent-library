@@ -53,5 +53,4 @@ message DeleteRelationshipRequest {
 }
 
 message DeleteRelationshipResponse {
-  bool success = 1;
 }

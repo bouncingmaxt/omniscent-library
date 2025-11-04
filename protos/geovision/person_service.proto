@@ -67,5 +67,4 @@ message DeletePersonRequest {
 }
 
 message DeletePersonResponse {
-  bool success = 1;
 }

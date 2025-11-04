@@ -342,7 +342,6 @@ func (x *DeleteSourceRequest) GetKey() string {
 
 type DeleteSourceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -377,13 +376,6 @@ func (*DeleteSourceResponse) Descriptor() ([]byte, []int) {
 	return file_geovision_source_service_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *DeleteSourceResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
 var File_geovision_source_service_proto protoreflect.FileDescriptor
 
 const file_geovision_source_service_proto_rawDesc = "" +
@@ -403,9 +395,8 @@ const file_geovision_source_service_proto_rawDesc = "" +
 	"\x14UpdateSourceResponse\x12%\n" +
 	"\x06source\x18\x01 \x01(\v2\r.model.SourceR\x06source\"'\n" +
 	"\x13DeleteSourceRequest\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\"0\n" +
-	"\x14DeleteSourceResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc0\x03\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"\x16\n" +
+	"\x14DeleteSourceResponse2\xc0\x03\n" +
 	"\rSourceService\x12a\n" +
 	"\tGetSource\x12\x1b.geovision.GetSourceRequest\x1a\x1c.geovision.GetSourceResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/sources/{key}\x12l\n" +
 	"\fCreateSource\x12\x1e.geovision.CreateSourceRequest\x1a\x1f.geovision.CreateSourceResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x06source\"\v/v1/sources\x12r\n" +

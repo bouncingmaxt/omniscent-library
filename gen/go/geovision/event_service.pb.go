@@ -558,7 +558,6 @@ func (x *DeleteEventRequest) GetKey() string {
 
 type DeleteEventResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -591,13 +590,6 @@ func (x *DeleteEventResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use DeleteEventResponse.ProtoReflect.Descriptor instead.
 func (*DeleteEventResponse) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *DeleteEventResponse) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
 }
 
 var File_geovision_event_service_proto protoreflect.FileDescriptor
@@ -633,9 +625,8 @@ const file_geovision_event_service_proto_rawDesc = "" +
 	"\x13UpdateEventResponse\x12\"\n" +
 	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\"&\n" +
 	"\x12DeleteEventRequest\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\"/\n" +
-	"\x13DeleteEventResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2\x90\x05\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"\x15\n" +
+	"\x13DeleteEventResponse2\x90\x05\n" +
 	"\fEventService\x12Z\n" +
 	"\tGetEvents\x12\x1b.geovision.GetEventsRequest\x1a\x1c.geovision.GetEventsResponse\"\x12\x82\xd3\xe4\x93\x02\f\x12\n" +
 	"/v1/events\x12]\n" +

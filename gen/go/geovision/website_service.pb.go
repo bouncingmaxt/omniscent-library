@@ -342,7 +342,6 @@ func (x *DeleteWebsiteRequest) GetKey() string {
 
 type DeleteWebsiteResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -377,13 +376,6 @@ func (*DeleteWebsiteResponse) Descriptor() ([]byte, []int) {
 	return file_geovision_website_service_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *DeleteWebsiteResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
 var File_geovision_website_service_proto protoreflect.FileDescriptor
 
 const file_geovision_website_service_proto_rawDesc = "" +
@@ -403,9 +395,8 @@ const file_geovision_website_service_proto_rawDesc = "" +
 	"\x15UpdateWebsiteResponse\x12(\n" +
 	"\awebsite\x18\x01 \x01(\v2\x0e.model.WebsiteR\awebsite\"(\n" +
 	"\x14DeleteWebsiteRequest\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\"1\n" +
-	"\x15DeleteWebsiteResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xd3\x03\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"\x17\n" +
+	"\x15DeleteWebsiteResponse2\xd3\x03\n" +
 	"\x0eWebsiteService\x12e\n" +
 	"\n" +
 	"GetWebsite\x12\x1c.geovision.GetWebsiteRequest\x1a\x1d.geovision.GetWebsiteResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/v1/websites/{key}\x12q\n" +

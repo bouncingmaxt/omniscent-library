@@ -899,52 +899,22 @@
       }
     },
     "geovisionDeleteEventResponse": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string"
-        }
-      }
+      "type": "object"
     },
     "geovisionDeleteOrganizationResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        }
-      }
+      "type": "object"
     },
     "geovisionDeletePersonResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        }
-      }
+      "type": "object"
     },
     "geovisionDeleteRelationshipResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        }
-      }
+      "type": "object"
     },
     "geovisionDeleteSourceResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        }
-      }
+      "type": "object"
     },
     "geovisionDeleteWebsiteResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        }
-      }
+      "type": "object"
     },
     "geovisionGetEventResponse": {
       "type": "object",

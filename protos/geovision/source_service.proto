@@ -67,5 +67,4 @@ message DeleteSourceRequest {
 }
 
 message DeleteSourceResponse {
-  bool success = 1;
 }

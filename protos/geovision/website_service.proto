@@ -67,5 +67,4 @@ message DeleteWebsiteRequest {
 }
 
 message DeleteWebsiteResponse {
-  bool success = 1;
 }
