@@ -9,8 +9,10 @@ option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;mode
 message Relation {
   // Common data
   string id = 1 [json_name = "_id"];
-  string from = 2 [json_name = "_from"];
-  string to = 3 [json_name = "_to"];
+  string key = 2 [json_name = "_key"];
+  string from = 3 [json_name = "_from"];
+  string to = 4 [json_name = "_to"];
+  string rev = 5 [json_name = "_rev"];
   // Main Data
   string name = 10;
   int32 confidence = 11;
