@@ -25,8 +25,10 @@ type Relation struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
 	Id   string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	From string `protobuf:"bytes,2,opt,name=from,json=_from,proto3" json:"from,omitempty"`
-	To   string `protobuf:"bytes,3,opt,name=to,json=_to,proto3" json:"to,omitempty"`
+	Key  string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
+	From string `protobuf:"bytes,3,opt,name=from,json=_from,proto3" json:"from,omitempty"`
+	To   string `protobuf:"bytes,4,opt,name=to,json=_to,proto3" json:"to,omitempty"`
+	Rev  string `protobuf:"bytes,5,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
 	// Main Data
 	Name       string                     `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Confidence int32                      `protobuf:"varint,11,opt,name=confidence,proto3" json:"confidence,omitempty"`
@@ -75,6 +77,13 @@ func (x *Relation) GetId() string {
 	return ""
 }
 
+func (x *Relation) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
 func (x *Relation) GetFrom() string {
 	if x != nil {
 		return x.From
@@ -85,6 +94,13 @@ func (x *Relation) GetFrom() string {
 func (x *Relation) GetTo() string {
 	if x != nil {
 		return x.To
+	}
+	return ""
+}
+
+func (x *Relation) GetRev() string {
+	if x != nil {
+		return x.Rev
 	}
 	return ""
 }
@@ -1150,11 +1166,13 @@ var File_model_osint_proto protoreflect.FileDescriptor
 
 const file_model_osint_proto_rawDesc = "" +
 	"\n" +
-	"\x11model/osint.proto\x12\x05model\x1a\x12model/common.proto\"\x89\x04\n" +
+	"\x11model/osint.proto\x12\x05model\x1a\x12model/common.proto\"\xaf\x04\n" +
 	"\bRelation\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x13\n" +
-	"\x04from\x18\x02 \x01(\tR\x05_from\x12\x0f\n" +
-	"\x02to\x18\x03 \x01(\tR\x03_to\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
+	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x13\n" +
+	"\x04from\x18\x03 \x01(\tR\x05_from\x12\x0f\n" +
+	"\x02to\x18\x04 \x01(\tR\x03_to\x12\x11\n" +
+	"\x03rev\x18\x05 \x01(\tR\x04_rev\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x1e\n" +
 	"\n" +

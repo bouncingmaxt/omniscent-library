@@ -1292,10 +1292,16 @@
           "type": "string",
           "title": "Common data"
         },
+        "_key": {
+          "type": "string"
+        },
         "_from": {
           "type": "string"
         },
         "_to": {
+          "type": "string"
+        },
+        "_rev": {
           "type": "string"
         },
         "name": {
