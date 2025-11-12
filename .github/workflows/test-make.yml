@@ -1,10 +1,6 @@
 name: Test Makefile
 
 on:
-  push:
-    branches:
-      - '**'
-      - '!mainline'
   pull_request:
     branches:
       - 'mainline'
@@ -19,19 +15,20 @@ jobs:
       uses: actions/setup-go@v4
       with:
         go-version: '1.21'
-        
+
     - name: Install Protoc
       uses: arduino/setup-protoc@v2
       with:
         version: '21.x'
-        
+
     - name: Install Go plugins for Protobuf
       run: |
         go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
         go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
         go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@latest
         go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest
-        
+        go install github.com/mitchellh/protoc-gen-go-json@latest
+
     - name: Test Make Targets
       run: |
         make gen_geovision
