@@ -165,12 +165,8 @@ func (x *GetEventRequest) GetKey() string {
 }
 
 type GetEventResponse struct {
-	state         protoimpl.MessageState       `protogen:"open.v1"`
-	Event         *model.Event                 `protobuf:"bytes,1,opt,name=event,proto3" json:"event,omitempty"`
-	Sources       []*model.RelatedSource       `protobuf:"bytes,2,rep,name=sources,proto3" json:"sources,omitempty"`
-	Persons       []*model.RelatedPerson       `protobuf:"bytes,3,rep,name=persons,proto3" json:"persons,omitempty"`
-	Organizations []*model.RelatedOrganization `protobuf:"bytes,4,rep,name=organizations,proto3" json:"organizations,omitempty"`
-	Websites      []*model.RelatedWebsite      `protobuf:"bytes,5,rep,name=websites,proto3" json:"websites,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Event         *model.Event           `protobuf:"bytes,1,opt,name=event,proto3" json:"event,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -212,55 +208,27 @@ func (x *GetEventResponse) GetEvent() *model.Event {
 	return nil
 }
 
-func (x *GetEventResponse) GetSources() []*model.RelatedSource {
-	if x != nil {
-		return x.Sources
-	}
-	return nil
-}
-
-func (x *GetEventResponse) GetPersons() []*model.RelatedPerson {
-	if x != nil {
-		return x.Persons
-	}
-	return nil
-}
-
-func (x *GetEventResponse) GetOrganizations() []*model.RelatedOrganization {
-	if x != nil {
-		return x.Organizations
-	}
-	return nil
-}
-
-func (x *GetEventResponse) GetWebsites() []*model.RelatedWebsite {
-	if x != nil {
-		return x.Websites
-	}
-	return nil
-}
-
-type GetRelatedEventsRequest struct {
+type GetEventRelatedEntitiesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetRelatedEventsRequest) Reset() {
-	*x = GetRelatedEventsRequest{}
+func (x *GetEventRelatedEntitiesRequest) Reset() {
+	*x = GetEventRelatedEntitiesRequest{}
 	mi := &file_geovision_event_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetRelatedEventsRequest) String() string {
+func (x *GetEventRelatedEntitiesRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetRelatedEventsRequest) ProtoMessage() {}
+func (*GetEventRelatedEntitiesRequest) ProtoMessage() {}
 
-func (x *GetRelatedEventsRequest) ProtoReflect() protoreflect.Message {
+func (x *GetEventRelatedEntitiesRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_geovision_event_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -272,39 +240,39 @@ func (x *GetRelatedEventsRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetRelatedEventsRequest.ProtoReflect.Descriptor instead.
-func (*GetRelatedEventsRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetEventRelatedEntitiesRequest.ProtoReflect.Descriptor instead.
+func (*GetEventRelatedEntitiesRequest) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetRelatedEventsRequest) GetKey() string {
+func (x *GetEventRelatedEntitiesRequest) GetKey() string {
 	if x != nil {
 		return x.Key
 	}
 	return ""
 }
 
-type GetRelatedEventsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Events        []*model.RelatedEvent  `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
+type GetEventRelatedEntitiesResponse struct {
+	state         protoimpl.MessageState                     `protogen:"open.v1"`
+	Entities      []*GetEventRelatedEntitiesResponse_Related `protobuf:"bytes,1,rep,name=entities,proto3" json:"entities,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetRelatedEventsResponse) Reset() {
-	*x = GetRelatedEventsResponse{}
+func (x *GetEventRelatedEntitiesResponse) Reset() {
+	*x = GetEventRelatedEntitiesResponse{}
 	mi := &file_geovision_event_service_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetRelatedEventsResponse) String() string {
+func (x *GetEventRelatedEntitiesResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetRelatedEventsResponse) ProtoMessage() {}
+func (*GetEventRelatedEntitiesResponse) ProtoMessage() {}
 
-func (x *GetRelatedEventsResponse) ProtoReflect() protoreflect.Message {
+func (x *GetEventRelatedEntitiesResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_geovision_event_service_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -316,14 +284,14 @@ func (x *GetRelatedEventsResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetRelatedEventsResponse.ProtoReflect.Descriptor instead.
-func (*GetRelatedEventsResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetEventRelatedEntitiesResponse.ProtoReflect.Descriptor instead.
+func (*GetEventRelatedEntitiesResponse) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetRelatedEventsResponse) GetEvents() []*model.RelatedEvent {
+func (x *GetEventRelatedEntitiesResponse) GetEntities() []*GetEventRelatedEntitiesResponse_Related {
 	if x != nil {
-		return x.Events
+		return x.Entities
 	}
 	return nil
 }
@@ -592,6 +560,132 @@ func (*DeleteEventResponse) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{11}
 }
 
+type GetEventRelatedEntitiesResponse_Related struct {
+	state    protoimpl.MessageState `protogen:"open.v1"`
+	Relation *model.Relation        `protobuf:"bytes,1,opt,name=relation,proto3" json:"relation,omitempty"`
+	// Types that are valid to be assigned to Entity:
+	//
+	//	*GetEventRelatedEntitiesResponse_Related_Source
+	//	*GetEventRelatedEntitiesResponse_Related_Person
+	//	*GetEventRelatedEntitiesResponse_Related_Organization
+	//	*GetEventRelatedEntitiesResponse_Related_Website
+	Entity        isGetEventRelatedEntitiesResponse_Related_Entity `protobuf_oneof:"entity"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetEventRelatedEntitiesResponse_Related) Reset() {
+	*x = GetEventRelatedEntitiesResponse_Related{}
+	mi := &file_geovision_event_service_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetEventRelatedEntitiesResponse_Related) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetEventRelatedEntitiesResponse_Related) ProtoMessage() {}
+
+func (x *GetEventRelatedEntitiesResponse_Related) ProtoReflect() protoreflect.Message {
+	mi := &file_geovision_event_service_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetEventRelatedEntitiesResponse_Related.ProtoReflect.Descriptor instead.
+func (*GetEventRelatedEntitiesResponse_Related) Descriptor() ([]byte, []int) {
+	return file_geovision_event_service_proto_rawDescGZIP(), []int{5, 0}
+}
+
+func (x *GetEventRelatedEntitiesResponse_Related) GetRelation() *model.Relation {
+	if x != nil {
+		return x.Relation
+	}
+	return nil
+}
+
+func (x *GetEventRelatedEntitiesResponse_Related) GetEntity() isGetEventRelatedEntitiesResponse_Related_Entity {
+	if x != nil {
+		return x.Entity
+	}
+	return nil
+}
+
+func (x *GetEventRelatedEntitiesResponse_Related) GetSource() *model.Source {
+	if x != nil {
+		if x, ok := x.Entity.(*GetEventRelatedEntitiesResponse_Related_Source); ok {
+			return x.Source
+		}
+	}
+	return nil
+}
+
+func (x *GetEventRelatedEntitiesResponse_Related) GetPerson() *model.Person {
+	if x != nil {
+		if x, ok := x.Entity.(*GetEventRelatedEntitiesResponse_Related_Person); ok {
+			return x.Person
+		}
+	}
+	return nil
+}
+
+func (x *GetEventRelatedEntitiesResponse_Related) GetOrganization() *model.Organization {
+	if x != nil {
+		if x, ok := x.Entity.(*GetEventRelatedEntitiesResponse_Related_Organization); ok {
+			return x.Organization
+		}
+	}
+	return nil
+}
+
+func (x *GetEventRelatedEntitiesResponse_Related) GetWebsite() *model.Website {
+	if x != nil {
+		if x, ok := x.Entity.(*GetEventRelatedEntitiesResponse_Related_Website); ok {
+			return x.Website
+		}
+	}
+	return nil
+}
+
+type isGetEventRelatedEntitiesResponse_Related_Entity interface {
+	isGetEventRelatedEntitiesResponse_Related_Entity()
+}
+
+type GetEventRelatedEntitiesResponse_Related_Source struct {
+	Source *model.Source `protobuf:"bytes,2,opt,name=source,proto3,oneof"`
+}
+
+type GetEventRelatedEntitiesResponse_Related_Person struct {
+	Person *model.Person `protobuf:"bytes,3,opt,name=person,proto3,oneof"`
+}
+
+type GetEventRelatedEntitiesResponse_Related_Organization struct {
+	Organization *model.Organization `protobuf:"bytes,4,opt,name=organization,proto3,oneof"`
+}
+
+type GetEventRelatedEntitiesResponse_Related_Website struct {
+	Website *model.Website `protobuf:"bytes,5,opt,name=website,proto3,oneof"`
+}
+
+func (*GetEventRelatedEntitiesResponse_Related_Source) isGetEventRelatedEntitiesResponse_Related_Entity() {
+}
+
+func (*GetEventRelatedEntitiesResponse_Related_Person) isGetEventRelatedEntitiesResponse_Related_Entity() {
+}
+
+func (*GetEventRelatedEntitiesResponse_Related_Organization) isGetEventRelatedEntitiesResponse_Related_Entity() {
+}
+
+func (*GetEventRelatedEntitiesResponse_Related_Website) isGetEventRelatedEntitiesResponse_Related_Entity() {
+}
+
 var File_geovision_event_service_proto protoreflect.FileDescriptor
 
 const file_geovision_event_service_proto_rawDesc = "" +
@@ -604,17 +698,20 @@ const file_geovision_event_service_proto_rawDesc = "" +
 	"\x11GetEventsResponse\x12$\n" +
 	"\x06events\x18\x01 \x03(\v2\f.model.EventR\x06events\"#\n" +
 	"\x0fGetEventRequest\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\"\x8b\x02\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"6\n" +
 	"\x10GetEventResponse\x12\"\n" +
-	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\x12.\n" +
-	"\asources\x18\x02 \x03(\v2\x14.model.RelatedSourceR\asources\x12.\n" +
-	"\apersons\x18\x03 \x03(\v2\x14.model.RelatedPersonR\apersons\x12@\n" +
-	"\rorganizations\x18\x04 \x03(\v2\x1a.model.RelatedOrganizationR\rorganizations\x121\n" +
-	"\bwebsites\x18\x05 \x03(\v2\x15.model.RelatedWebsiteR\bwebsites\"+\n" +
-	"\x17GetRelatedEventsRequest\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\"G\n" +
-	"\x18GetRelatedEventsResponse\x12+\n" +
-	"\x06events\x18\x01 \x03(\v2\x13.model.RelatedEventR\x06events\"8\n" +
+	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\"2\n" +
+	"\x1eGetEventRelatedEntitiesRequest\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\"\xed\x02\n" +
+	"\x1fGetEventRelatedEntitiesResponse\x12N\n" +
+	"\bentities\x18\x01 \x03(\v22.geovision.GetEventRelatedEntitiesResponse.RelatedR\bentities\x1a\xf9\x01\n" +
+	"\aRelated\x12+\n" +
+	"\brelation\x18\x01 \x01(\v2\x0f.model.RelationR\brelation\x12'\n" +
+	"\x06source\x18\x02 \x01(\v2\r.model.SourceH\x00R\x06source\x12'\n" +
+	"\x06person\x18\x03 \x01(\v2\r.model.PersonH\x00R\x06person\x129\n" +
+	"\forganization\x18\x04 \x01(\v2\x13.model.OrganizationH\x00R\forganization\x12*\n" +
+	"\awebsite\x18\x05 \x01(\v2\x0e.model.WebsiteH\x00R\awebsiteB\b\n" +
+	"\x06entity\"8\n" +
 	"\x12CreateEventRequest\x12\"\n" +
 	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\"9\n" +
 	"\x13CreateEventResponse\x12\"\n" +
@@ -626,12 +723,12 @@ const file_geovision_event_service_proto_rawDesc = "" +
 	"\x05event\x18\x01 \x01(\v2\f.model.EventR\x05event\"&\n" +
 	"\x12DeleteEventRequest\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\"\x15\n" +
-	"\x13DeleteEventResponse2\x90\x05\n" +
+	"\x13DeleteEventResponse2\xa7\x05\n" +
 	"\fEventService\x12Z\n" +
 	"\tGetEvents\x12\x1b.geovision.GetEventsRequest\x1a\x1c.geovision.GetEventsResponse\"\x12\x82\xd3\xe4\x93\x02\f\x12\n" +
 	"/v1/events\x12]\n" +
-	"\bGetEvent\x12\x1a.geovision.GetEventRequest\x1a\x1b.geovision.GetEventResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/events/{key}\x12\x84\x01\n" +
-	"\x10GetRelatedEvents\x12\".geovision.GetRelatedEventsRequest\x1a#.geovision.GetRelatedEventsResponse\"'\x82\xd3\xe4\x93\x02!\x12\x1f/v1/events/{key}/related-events\x12g\n" +
+	"\bGetEvent\x12\x1a.geovision.GetEventRequest\x1a\x1b.geovision.GetEventResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/events/{key}\x12\x9b\x01\n" +
+	"\x17GetEventRelatedEntities\x12).geovision.GetEventRelatedEntitiesRequest\x1a*.geovision.GetEventRelatedEntitiesResponse\")\x82\xd3\xe4\x93\x02#\x12!/v1/events/{key}/related-entities\x12g\n" +
 	"\vCreateEvent\x12\x1d.geovision.CreateEventRequest\x1a\x1e.geovision.CreateEventResponse\"\x19\x82\xd3\xe4\x93\x02\x13:\x05event\"\n" +
 	"/v1/events\x12m\n" +
 	"\vUpdateEvent\x12\x1d.geovision.UpdateEventRequest\x1a\x1e.geovision.UpdateEventResponse\"\x1f\x82\xd3\xe4\x93\x02\x19:\x05event\x1a\x10/v1/events/{key}\x12f\n" +
@@ -649,56 +746,58 @@ func file_geovision_event_service_proto_rawDescGZIP() []byte {
 	return file_geovision_event_service_proto_rawDescData
 }
 
-var file_geovision_event_service_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_geovision_event_service_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_geovision_event_service_proto_goTypes = []any{
-	(*GetEventsRequest)(nil),          // 0: geovision.GetEventsRequest
-	(*GetEventsResponse)(nil),         // 1: geovision.GetEventsResponse
-	(*GetEventRequest)(nil),           // 2: geovision.GetEventRequest
-	(*GetEventResponse)(nil),          // 3: geovision.GetEventResponse
-	(*GetRelatedEventsRequest)(nil),   // 4: geovision.GetRelatedEventsRequest
-	(*GetRelatedEventsResponse)(nil),  // 5: geovision.GetRelatedEventsResponse
-	(*CreateEventRequest)(nil),        // 6: geovision.CreateEventRequest
-	(*CreateEventResponse)(nil),       // 7: geovision.CreateEventResponse
-	(*UpdateEventRequest)(nil),        // 8: geovision.UpdateEventRequest
-	(*UpdateEventResponse)(nil),       // 9: geovision.UpdateEventResponse
-	(*DeleteEventRequest)(nil),        // 10: geovision.DeleteEventRequest
-	(*DeleteEventResponse)(nil),       // 11: geovision.DeleteEventResponse
-	(*model.Event)(nil),               // 12: model.Event
-	(*model.RelatedSource)(nil),       // 13: model.RelatedSource
-	(*model.RelatedPerson)(nil),       // 14: model.RelatedPerson
-	(*model.RelatedOrganization)(nil), // 15: model.RelatedOrganization
-	(*model.RelatedWebsite)(nil),      // 16: model.RelatedWebsite
-	(*model.RelatedEvent)(nil),        // 17: model.RelatedEvent
+	(*GetEventsRequest)(nil),                        // 0: geovision.GetEventsRequest
+	(*GetEventsResponse)(nil),                       // 1: geovision.GetEventsResponse
+	(*GetEventRequest)(nil),                         // 2: geovision.GetEventRequest
+	(*GetEventResponse)(nil),                        // 3: geovision.GetEventResponse
+	(*GetEventRelatedEntitiesRequest)(nil),          // 4: geovision.GetEventRelatedEntitiesRequest
+	(*GetEventRelatedEntitiesResponse)(nil),         // 5: geovision.GetEventRelatedEntitiesResponse
+	(*CreateEventRequest)(nil),                      // 6: geovision.CreateEventRequest
+	(*CreateEventResponse)(nil),                     // 7: geovision.CreateEventResponse
+	(*UpdateEventRequest)(nil),                      // 8: geovision.UpdateEventRequest
+	(*UpdateEventResponse)(nil),                     // 9: geovision.UpdateEventResponse
+	(*DeleteEventRequest)(nil),                      // 10: geovision.DeleteEventRequest
+	(*DeleteEventResponse)(nil),                     // 11: geovision.DeleteEventResponse
+	(*GetEventRelatedEntitiesResponse_Related)(nil), // 12: geovision.GetEventRelatedEntitiesResponse.Related
+	(*model.Event)(nil),                             // 13: model.Event
+	(*model.Relation)(nil),                          // 14: model.Relation
+	(*model.Source)(nil),                            // 15: model.Source
+	(*model.Person)(nil),                            // 16: model.Person
+	(*model.Organization)(nil),                      // 17: model.Organization
+	(*model.Website)(nil),                           // 18: model.Website
 }
 var file_geovision_event_service_proto_depIdxs = []int32{
-	12, // 0: geovision.GetEventsResponse.events:type_name -> model.Event
-	12, // 1: geovision.GetEventResponse.event:type_name -> model.Event
-	13, // 2: geovision.GetEventResponse.sources:type_name -> model.RelatedSource
-	14, // 3: geovision.GetEventResponse.persons:type_name -> model.RelatedPerson
-	15, // 4: geovision.GetEventResponse.organizations:type_name -> model.RelatedOrganization
-	16, // 5: geovision.GetEventResponse.websites:type_name -> model.RelatedWebsite
-	17, // 6: geovision.GetRelatedEventsResponse.events:type_name -> model.RelatedEvent
-	12, // 7: geovision.CreateEventRequest.event:type_name -> model.Event
-	12, // 8: geovision.CreateEventResponse.event:type_name -> model.Event
-	12, // 9: geovision.UpdateEventRequest.event:type_name -> model.Event
-	12, // 10: geovision.UpdateEventResponse.event:type_name -> model.Event
-	0,  // 11: geovision.EventService.GetEvents:input_type -> geovision.GetEventsRequest
-	2,  // 12: geovision.EventService.GetEvent:input_type -> geovision.GetEventRequest
-	4,  // 13: geovision.EventService.GetRelatedEvents:input_type -> geovision.GetRelatedEventsRequest
-	6,  // 14: geovision.EventService.CreateEvent:input_type -> geovision.CreateEventRequest
-	8,  // 15: geovision.EventService.UpdateEvent:input_type -> geovision.UpdateEventRequest
-	10, // 16: geovision.EventService.DeleteEvent:input_type -> geovision.DeleteEventRequest
-	1,  // 17: geovision.EventService.GetEvents:output_type -> geovision.GetEventsResponse
-	3,  // 18: geovision.EventService.GetEvent:output_type -> geovision.GetEventResponse
-	5,  // 19: geovision.EventService.GetRelatedEvents:output_type -> geovision.GetRelatedEventsResponse
-	7,  // 20: geovision.EventService.CreateEvent:output_type -> geovision.CreateEventResponse
-	9,  // 21: geovision.EventService.UpdateEvent:output_type -> geovision.UpdateEventResponse
-	11, // 22: geovision.EventService.DeleteEvent:output_type -> geovision.DeleteEventResponse
-	17, // [17:23] is the sub-list for method output_type
-	11, // [11:17] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	13, // 0: geovision.GetEventsResponse.events:type_name -> model.Event
+	13, // 1: geovision.GetEventResponse.event:type_name -> model.Event
+	12, // 2: geovision.GetEventRelatedEntitiesResponse.entities:type_name -> geovision.GetEventRelatedEntitiesResponse.Related
+	13, // 3: geovision.CreateEventRequest.event:type_name -> model.Event
+	13, // 4: geovision.CreateEventResponse.event:type_name -> model.Event
+	13, // 5: geovision.UpdateEventRequest.event:type_name -> model.Event
+	13, // 6: geovision.UpdateEventResponse.event:type_name -> model.Event
+	14, // 7: geovision.GetEventRelatedEntitiesResponse.Related.relation:type_name -> model.Relation
+	15, // 8: geovision.GetEventRelatedEntitiesResponse.Related.source:type_name -> model.Source
+	16, // 9: geovision.GetEventRelatedEntitiesResponse.Related.person:type_name -> model.Person
+	17, // 10: geovision.GetEventRelatedEntitiesResponse.Related.organization:type_name -> model.Organization
+	18, // 11: geovision.GetEventRelatedEntitiesResponse.Related.website:type_name -> model.Website
+	0,  // 12: geovision.EventService.GetEvents:input_type -> geovision.GetEventsRequest
+	2,  // 13: geovision.EventService.GetEvent:input_type -> geovision.GetEventRequest
+	4,  // 14: geovision.EventService.GetEventRelatedEntities:input_type -> geovision.GetEventRelatedEntitiesRequest
+	6,  // 15: geovision.EventService.CreateEvent:input_type -> geovision.CreateEventRequest
+	8,  // 16: geovision.EventService.UpdateEvent:input_type -> geovision.UpdateEventRequest
+	10, // 17: geovision.EventService.DeleteEvent:input_type -> geovision.DeleteEventRequest
+	1,  // 18: geovision.EventService.GetEvents:output_type -> geovision.GetEventsResponse
+	3,  // 19: geovision.EventService.GetEvent:output_type -> geovision.GetEventResponse
+	5,  // 20: geovision.EventService.GetEventRelatedEntities:output_type -> geovision.GetEventRelatedEntitiesResponse
+	7,  // 21: geovision.EventService.CreateEvent:output_type -> geovision.CreateEventResponse
+	9,  // 22: geovision.EventService.UpdateEvent:output_type -> geovision.UpdateEventResponse
+	11, // 23: geovision.EventService.DeleteEvent:output_type -> geovision.DeleteEventResponse
+	18, // [18:24] is the sub-list for method output_type
+	12, // [12:18] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_geovision_event_service_proto_init() }
@@ -706,13 +805,19 @@ func file_geovision_event_service_proto_init() {
 	if File_geovision_event_service_proto != nil {
 		return
 	}
+	file_geovision_event_service_proto_msgTypes[12].OneofWrappers = []any{
+		(*GetEventRelatedEntitiesResponse_Related_Source)(nil),
+		(*GetEventRelatedEntitiesResponse_Related_Person)(nil),
+		(*GetEventRelatedEntitiesResponse_Related_Organization)(nil),
+		(*GetEventRelatedEntitiesResponse_Related_Website)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_geovision_event_service_proto_rawDesc), len(file_geovision_event_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

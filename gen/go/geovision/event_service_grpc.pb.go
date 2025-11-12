@@ -19,12 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	EventService_GetEvents_FullMethodName        = "/geovision.EventService/GetEvents"
-	EventService_GetEvent_FullMethodName         = "/geovision.EventService/GetEvent"
-	EventService_GetRelatedEvents_FullMethodName = "/geovision.EventService/GetRelatedEvents"
-	EventService_CreateEvent_FullMethodName      = "/geovision.EventService/CreateEvent"
-	EventService_UpdateEvent_FullMethodName      = "/geovision.EventService/UpdateEvent"
-	EventService_DeleteEvent_FullMethodName      = "/geovision.EventService/DeleteEvent"
+	EventService_GetEvents_FullMethodName               = "/geovision.EventService/GetEvents"
+	EventService_GetEvent_FullMethodName                = "/geovision.EventService/GetEvent"
+	EventService_GetEventRelatedEntities_FullMethodName = "/geovision.EventService/GetEventRelatedEntities"
+	EventService_CreateEvent_FullMethodName             = "/geovision.EventService/CreateEvent"
+	EventService_UpdateEvent_FullMethodName             = "/geovision.EventService/UpdateEvent"
+	EventService_DeleteEvent_FullMethodName             = "/geovision.EventService/DeleteEvent"
 )
 
 // EventServiceClient is the client API for EventService service.
@@ -35,7 +35,7 @@ const (
 type EventServiceClient interface {
 	GetEvents(ctx context.Context, in *GetEventsRequest, opts ...grpc.CallOption) (*GetEventsResponse, error)
 	GetEvent(ctx context.Context, in *GetEventRequest, opts ...grpc.CallOption) (*GetEventResponse, error)
-	GetRelatedEvents(ctx context.Context, in *GetRelatedEventsRequest, opts ...grpc.CallOption) (*GetRelatedEventsResponse, error)
+	GetEventRelatedEntities(ctx context.Context, in *GetEventRelatedEntitiesRequest, opts ...grpc.CallOption) (*GetEventRelatedEntitiesResponse, error)
 	CreateEvent(ctx context.Context, in *CreateEventRequest, opts ...grpc.CallOption) (*CreateEventResponse, error)
 	UpdateEvent(ctx context.Context, in *UpdateEventRequest, opts ...grpc.CallOption) (*UpdateEventResponse, error)
 	DeleteEvent(ctx context.Context, in *DeleteEventRequest, opts ...grpc.CallOption) (*DeleteEventResponse, error)
@@ -69,10 +69,10 @@ func (c *eventServiceClient) GetEvent(ctx context.Context, in *GetEventRequest, 
 	return out, nil
 }
 
-func (c *eventServiceClient) GetRelatedEvents(ctx context.Context, in *GetRelatedEventsRequest, opts ...grpc.CallOption) (*GetRelatedEventsResponse, error) {
+func (c *eventServiceClient) GetEventRelatedEntities(ctx context.Context, in *GetEventRelatedEntitiesRequest, opts ...grpc.CallOption) (*GetEventRelatedEntitiesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetRelatedEventsResponse)
-	err := c.cc.Invoke(ctx, EventService_GetRelatedEvents_FullMethodName, in, out, cOpts...)
+	out := new(GetEventRelatedEntitiesResponse)
+	err := c.cc.Invoke(ctx, EventService_GetEventRelatedEntities_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -117,7 +117,7 @@ func (c *eventServiceClient) DeleteEvent(ctx context.Context, in *DeleteEventReq
 type EventServiceServer interface {
 	GetEvents(context.Context, *GetEventsRequest) (*GetEventsResponse, error)
 	GetEvent(context.Context, *GetEventRequest) (*GetEventResponse, error)
-	GetRelatedEvents(context.Context, *GetRelatedEventsRequest) (*GetRelatedEventsResponse, error)
+	GetEventRelatedEntities(context.Context, *GetEventRelatedEntitiesRequest) (*GetEventRelatedEntitiesResponse, error)
 	CreateEvent(context.Context, *CreateEventRequest) (*CreateEventResponse, error)
 	UpdateEvent(context.Context, *UpdateEventRequest) (*UpdateEventResponse, error)
 	DeleteEvent(context.Context, *DeleteEventRequest) (*DeleteEventResponse, error)
@@ -137,8 +137,8 @@ func (UnimplementedEventServiceServer) GetEvents(context.Context, *GetEventsRequ
 func (UnimplementedEventServiceServer) GetEvent(context.Context, *GetEventRequest) (*GetEventResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEvent not implemented")
 }
-func (UnimplementedEventServiceServer) GetRelatedEvents(context.Context, *GetRelatedEventsRequest) (*GetRelatedEventsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetRelatedEvents not implemented")
+func (UnimplementedEventServiceServer) GetEventRelatedEntities(context.Context, *GetEventRelatedEntitiesRequest) (*GetEventRelatedEntitiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetEventRelatedEntities not implemented")
 }
 func (UnimplementedEventServiceServer) CreateEvent(context.Context, *CreateEventRequest) (*CreateEventResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateEvent not implemented")
@@ -206,20 +206,20 @@ func _EventService_GetEvent_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _EventService_GetRelatedEvents_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRelatedEventsRequest)
+func _EventService_GetEventRelatedEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetEventRelatedEntitiesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(EventServiceServer).GetRelatedEvents(ctx, in)
+		return srv.(EventServiceServer).GetEventRelatedEntities(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: EventService_GetRelatedEvents_FullMethodName,
+		FullMethod: EventService_GetEventRelatedEntities_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventServiceServer).GetRelatedEvents(ctx, req.(*GetRelatedEventsRequest))
+		return srv.(EventServiceServer).GetEventRelatedEntities(ctx, req.(*GetEventRelatedEntitiesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -294,8 +294,8 @@ var EventService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _EventService_GetEvent_Handler,
 		},
 		{
-			MethodName: "GetRelatedEvents",
-			Handler:    _EventService_GetRelatedEvents_Handler,
+			MethodName: "GetEventRelatedEntities",
+			Handler:    _EventService_GetEventRelatedEntities_Handler,
 		},
 		{
 			MethodName: "CreateEvent",

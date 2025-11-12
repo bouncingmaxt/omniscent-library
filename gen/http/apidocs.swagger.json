@@ -193,14 +193,14 @@
         ]
       }
     },
-    "/v1/events/{key}/related-events": {
+    "/v1/events/{key}/related-entities": {
       "get": {
-        "operationId": "EventService_GetRelatedEvents",
+        "operationId": "EventService_GetEventRelatedEntities",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/geovisionGetRelatedEventsResponse"
+              "$ref": "#/definitions/geovisionGetEventRelatedEntitiesResponse"
             }
           },
           "default": {
@@ -827,6 +827,26 @@
     }
   },
   "definitions": {
+    "GetEventRelatedEntitiesResponseRelated": {
+      "type": "object",
+      "properties": {
+        "relation": {
+          "$ref": "#/definitions/modelRelation"
+        },
+        "source": {
+          "$ref": "#/definitions/modelSource"
+        },
+        "person": {
+          "$ref": "#/definitions/modelPerson"
+        },
+        "organization": {
+          "$ref": "#/definitions/modelOrganization"
+        },
+        "website": {
+          "$ref": "#/definitions/modelWebsite"
+        }
+      }
+    },
     "RelationValue": {
       "type": "object",
       "properties": {
@@ -916,39 +936,23 @@
     "geovisionDeleteWebsiteResponse": {
       "type": "object"
     },
+    "geovisionGetEventRelatedEntitiesResponse": {
+      "type": "object",
+      "properties": {
+        "entities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/GetEventRelatedEntitiesResponseRelated"
+          }
+        }
+      }
+    },
     "geovisionGetEventResponse": {
       "type": "object",
       "properties": {
         "event": {
           "$ref": "#/definitions/modelEvent"
-        },
-        "sources": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/modelRelatedSource"
-          }
-        },
-        "persons": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/modelRelatedPerson"
-          }
-        },
-        "organizations": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/modelRelatedOrganization"
-          }
-        },
-        "websites": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/modelRelatedWebsite"
-          }
         }
       }
     },
@@ -977,18 +981,6 @@
       "properties": {
         "person": {
           "$ref": "#/definitions/modelPerson"
-        }
-      }
-    },
-    "geovisionGetRelatedEventsResponse": {
-      "type": "object",
-      "properties": {
-        "events": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/modelRelatedEvent"
-          }
         }
       }
     },
@@ -1227,61 +1219,6 @@
           "items": {
             "type": "string"
           }
-        }
-      }
-    },
-    "modelRelatedEvent": {
-      "type": "object",
-      "properties": {
-        "relation": {
-          "$ref": "#/definitions/modelRelation"
-        },
-        "event": {
-          "$ref": "#/definitions/modelEvent"
-        }
-      }
-    },
-    "modelRelatedOrganization": {
-      "type": "object",
-      "properties": {
-        "relation": {
-          "$ref": "#/definitions/modelRelation"
-        },
-        "organization": {
-          "$ref": "#/definitions/modelOrganization"
-        }
-      }
-    },
-    "modelRelatedPerson": {
-      "type": "object",
-      "properties": {
-        "relation": {
-          "$ref": "#/definitions/modelRelation"
-        },
-        "person": {
-          "$ref": "#/definitions/modelPerson"
-        }
-      }
-    },
-    "modelRelatedSource": {
-      "type": "object",
-      "properties": {
-        "relation": {
-          "$ref": "#/definitions/modelRelation"
-        },
-        "source": {
-          "$ref": "#/definitions/modelSource"
-        }
-      }
-    },
-    "modelRelatedWebsite": {
-      "type": "object",
-      "properties": {
-        "relation": {
-          "$ref": "#/definitions/modelRelation"
-        },
-        "website": {
-          "$ref": "#/definitions/modelWebsite"
         }
       }
     },
