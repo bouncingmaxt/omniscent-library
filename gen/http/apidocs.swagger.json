@@ -939,11 +939,18 @@
     "geovisionGetEventsResponse": {
       "type": "object",
       "properties": {
-        "events": {
+        "relation": {
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/modelRelatedEvent"
+            "$ref": "#/definitions/modelRelation"
+          }
+        },
+        "event": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/modelEvent"
           }
         }
       }
@@ -1219,17 +1226,6 @@
         },
         "website": {
           "$ref": "#/definitions/modelWebsite"
-        }
-      }
-    },
-    "modelRelatedEvent": {
-      "type": "object",
-      "properties": {
-        "relation": {
-          "$ref": "#/definitions/modelRelation"
-        },
-        "event": {
-          "$ref": "#/definitions/modelEvent"
         }
       }
     },

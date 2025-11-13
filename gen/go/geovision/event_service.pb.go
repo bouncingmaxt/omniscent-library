@@ -78,7 +78,8 @@ func (x *GetEventsRequest) GetEndTime() int64 {
 
 type GetEventsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Events        []*model.RelatedEvent  `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
+	Relation      []*model.Relation      `protobuf:"bytes,1,rep,name=relation,proto3" json:"relation,omitempty"`
+	Event         []*model.Event         `protobuf:"bytes,2,rep,name=event,proto3" json:"event,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -113,9 +114,16 @@ func (*GetEventsResponse) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetEventsResponse) GetEvents() []*model.RelatedEvent {
+func (x *GetEventsResponse) GetRelation() []*model.Relation {
 	if x != nil {
-		return x.Events
+		return x.Relation
+	}
+	return nil
+}
+
+func (x *GetEventsResponse) GetEvent() []*model.Event {
+	if x != nil {
+		return x.Event
 	}
 	return nil
 }
@@ -568,9 +576,10 @@ const file_geovision_event_service_proto_rawDesc = "" +
 	"\x10GetEventsRequest\x12\x1d\n" +
 	"\n" +
 	"start_time\x18\x01 \x01(\x03R\tstartTime\x12\x19\n" +
-	"\bend_time\x18\x02 \x01(\x03R\aendTime\"@\n" +
+	"\bend_time\x18\x02 \x01(\x03R\aendTime\"d\n" +
 	"\x11GetEventsResponse\x12+\n" +
-	"\x06events\x18\x01 \x03(\v2\x13.model.RelatedEventR\x06events\"#\n" +
+	"\brelation\x18\x01 \x03(\v2\x0f.model.RelationR\brelation\x12\"\n" +
+	"\x05event\x18\x02 \x03(\v2\f.model.EventR\x05event\"#\n" +
 	"\x0fGetEventRequest\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\"6\n" +
 	"\x10GetEventResponse\x12\"\n" +
@@ -627,35 +636,36 @@ var file_geovision_event_service_proto_goTypes = []any{
 	(*UpdateEventResponse)(nil),             // 9: geovision.UpdateEventResponse
 	(*DeleteEventRequest)(nil),              // 10: geovision.DeleteEventRequest
 	(*DeleteEventResponse)(nil),             // 11: geovision.DeleteEventResponse
-	(*model.RelatedEvent)(nil),              // 12: model.RelatedEvent
+	(*model.Relation)(nil),                  // 12: model.Relation
 	(*model.Event)(nil),                     // 13: model.Event
 	(*model.RelatedEntity)(nil),             // 14: model.RelatedEntity
 }
 var file_geovision_event_service_proto_depIdxs = []int32{
-	12, // 0: geovision.GetEventsResponse.events:type_name -> model.RelatedEvent
-	13, // 1: geovision.GetEventResponse.event:type_name -> model.Event
-	14, // 2: geovision.GetEventRelatedEntitiesResponse.entities:type_name -> model.RelatedEntity
-	13, // 3: geovision.CreateEventRequest.event:type_name -> model.Event
-	13, // 4: geovision.CreateEventResponse.event:type_name -> model.Event
-	13, // 5: geovision.UpdateEventRequest.event:type_name -> model.Event
-	13, // 6: geovision.UpdateEventResponse.event:type_name -> model.Event
-	0,  // 7: geovision.EventService.GetEvents:input_type -> geovision.GetEventsRequest
-	2,  // 8: geovision.EventService.GetEvent:input_type -> geovision.GetEventRequest
-	4,  // 9: geovision.EventService.GetEventRelatedEntities:input_type -> geovision.GetEventRelatedEntitiesRequest
-	6,  // 10: geovision.EventService.CreateEvent:input_type -> geovision.CreateEventRequest
-	8,  // 11: geovision.EventService.UpdateEvent:input_type -> geovision.UpdateEventRequest
-	10, // 12: geovision.EventService.DeleteEvent:input_type -> geovision.DeleteEventRequest
-	1,  // 13: geovision.EventService.GetEvents:output_type -> geovision.GetEventsResponse
-	3,  // 14: geovision.EventService.GetEvent:output_type -> geovision.GetEventResponse
-	5,  // 15: geovision.EventService.GetEventRelatedEntities:output_type -> geovision.GetEventRelatedEntitiesResponse
-	7,  // 16: geovision.EventService.CreateEvent:output_type -> geovision.CreateEventResponse
-	9,  // 17: geovision.EventService.UpdateEvent:output_type -> geovision.UpdateEventResponse
-	11, // 18: geovision.EventService.DeleteEvent:output_type -> geovision.DeleteEventResponse
-	13, // [13:19] is the sub-list for method output_type
-	7,  // [7:13] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	12, // 0: geovision.GetEventsResponse.relation:type_name -> model.Relation
+	13, // 1: geovision.GetEventsResponse.event:type_name -> model.Event
+	13, // 2: geovision.GetEventResponse.event:type_name -> model.Event
+	14, // 3: geovision.GetEventRelatedEntitiesResponse.entities:type_name -> model.RelatedEntity
+	13, // 4: geovision.CreateEventRequest.event:type_name -> model.Event
+	13, // 5: geovision.CreateEventResponse.event:type_name -> model.Event
+	13, // 6: geovision.UpdateEventRequest.event:type_name -> model.Event
+	13, // 7: geovision.UpdateEventResponse.event:type_name -> model.Event
+	0,  // 8: geovision.EventService.GetEvents:input_type -> geovision.GetEventsRequest
+	2,  // 9: geovision.EventService.GetEvent:input_type -> geovision.GetEventRequest
+	4,  // 10: geovision.EventService.GetEventRelatedEntities:input_type -> geovision.GetEventRelatedEntitiesRequest
+	6,  // 11: geovision.EventService.CreateEvent:input_type -> geovision.CreateEventRequest
+	8,  // 12: geovision.EventService.UpdateEvent:input_type -> geovision.UpdateEventRequest
+	10, // 13: geovision.EventService.DeleteEvent:input_type -> geovision.DeleteEventRequest
+	1,  // 14: geovision.EventService.GetEvents:output_type -> geovision.GetEventsResponse
+	3,  // 15: geovision.EventService.GetEvent:output_type -> geovision.GetEventResponse
+	5,  // 16: geovision.EventService.GetEventRelatedEntities:output_type -> geovision.GetEventRelatedEntitiesResponse
+	7,  // 17: geovision.EventService.CreateEvent:output_type -> geovision.CreateEventResponse
+	9,  // 18: geovision.EventService.UpdateEvent:output_type -> geovision.UpdateEventResponse
+	11, // 19: geovision.EventService.DeleteEvent:output_type -> geovision.DeleteEventResponse
+	14, // [14:20] is the sub-list for method output_type
+	8,  // [8:14] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_geovision_event_service_proto_init() }
