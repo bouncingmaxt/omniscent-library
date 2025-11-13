@@ -28,6 +28,10 @@ go mod tidy
 git config core.hooksPath .githooks 
 ```
 
+## Development Guide
+
+Tagging is automatically done by the github action. Commit message including `#major`, `#minor`, `#patch`, or `#none` in the branches `main` and `pre-release` will bump the release and pre-release versions.
+
 ## Documentation Guidelines
 
 Each readme file should cover ONLY these aspects:

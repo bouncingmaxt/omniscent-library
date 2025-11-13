@@ -1,10 +1,11 @@
-name: Test Makefile
+name: Build
 
 on:
   push:
     branches:
       - '**'
-      - '!mainline'
+      - '!main'
+      - '!pre-release'
 
 jobs:
   generate-proto:
