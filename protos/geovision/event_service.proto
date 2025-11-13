@@ -56,7 +56,8 @@ message GetEventsRequest {
 }
 
 message GetEventsResponse {
-  repeated model.RelatedEvent events = 1;
+  repeated model.Relation relation = 1;
+  repeated model.Event event = 2;
 }
 
 message GetEventRequest {
