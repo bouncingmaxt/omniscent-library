@@ -1099,26 +1099,31 @@
           "format": "float"
         },
         "countryCode": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: json:\"country_code,omitempty\""
         },
         "administrativeArea": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: json:\"administrative_area,omitempty\""
         },
         "subAdministrativeArea": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: json:\"sub_administrative_area,omitempty\""
         },
         "locality": {
           "type": "string"
         },
         "subLocality": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: json:\"sub_locality,omitempty\""
         },
         "address": {
           "type": "string"
         },
         "postalCode": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "title": "@gotags: json:\"postal_code,omitempty\""
         }
       }
     },
