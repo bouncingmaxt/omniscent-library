@@ -1,0 +1,41 @@
+name: Automatic Tagging
+
+on:
+  push:
+    branches:
+      - mainline
+
+jobs:
+  tag:
+    name: Create New Tag
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@v1.67.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # --- Configuration ---
+
+          # By default, if no 'major', 'minor', or 'patch' label is found,
+          # it will create a 'patch' bump.
+          DEFAULT_BUMP: patch
+
+          # This adds a 'v' prefix to the tag (e.g., v1.0.1).
+          # Set to 'false' if you just want '1.0.1'.
+          WITH_V: true
+
+          # You can customize the labels this action looks for.
+          # Default is 'major', 'minor', 'patch'.
+          # MAJOR_BUMP_LABEL: 'breaking-change'
+          # MINOR_BUMP_LABEL: 'feature'
+          # PATCH_BUMP_LABEL: 'bugfix'
