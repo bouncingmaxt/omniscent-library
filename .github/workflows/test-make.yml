@@ -3,7 +3,7 @@ name: Test Makefile
 on:
   pull_request:
     branches:
-      - 'mainline'
+      - 'main'
 
 jobs:
   test-make:
