@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 package model;
 
 option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;model";
