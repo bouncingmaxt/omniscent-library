@@ -1,0 +1,13 @@
+package model;
+
+option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;model";
+
+message User {
+    // basic info
+    string id = 1;
+    string name = 2;
+    string password = 3;
+    // special
+    // @gotags: json:"is_admin,omitempty"
+    bool is_admin = 50;
+}
