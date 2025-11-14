@@ -22,6 +22,7 @@ gen_geovision_openapi: DESTDIR := ./gen/http
 gen_geovision_openapi: PROTO_OUT := --openapiv2_out=$(DESTDIR) --openapiv2_opt=allow_merge=true
 gen_geovision_openapi: PROTO_FILES := $(wildcard $(PROTO_DIR)/geovision/*.proto)
 gen_geovision_openapi: PROTO_FILES += $(wildcard $(PROTO_DIR)/model/*.proto)
+gen_geovision_openapi: PROTO_FILES += $(wildcard $(PROTO_DIR)/user/*.proto)
 gen_geovision_openapi: proto_gen
 
 proto_gen:
