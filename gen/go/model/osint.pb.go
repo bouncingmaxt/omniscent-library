@@ -24,17 +24,25 @@ const (
 type Relation struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id   string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key  string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	From string `protobuf:"bytes,3,opt,name=from,json=_from,proto3" json:"from,omitempty"`
-	To   string `protobuf:"bytes,4,opt,name=to,json=_to,proto3" json:"to,omitempty"`
-	Rev  string `protobuf:"bytes,5,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: valid:"_id"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" valid:"_id"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_from,omitempty"
+	From string `protobuf:"bytes,3,opt,name=from,proto3" json:"_from,omitempty"`
+	// @gotags: json:"_to,omitempty"
+	To string `protobuf:"bytes,4,opt,name=to,proto3" json:"_to,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev string `protobuf:"bytes,5,opt,name=rev,proto3" json:"_rev,omitempty"`
 	// Main Data
-	Name       string                     `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
+	Name string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
+	// @gotags: json:"confidence,omitempty"
 	Confidence int32                      `protobuf:"varint,11,opt,name=confidence,proto3" json:"confidence,omitempty"`
 	Attributes map[string]*Relation_Value `protobuf:"bytes,12,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	// Time data
-	CreatedAt     int64 `protobuf:"varint,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// @gotags: json:"created_at,omitempty"
+	CreatedAt int64 `protobuf:"varint,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// @gotags: json:"updated_at,omitempty"
 	UpdatedAt     int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -143,17 +151,22 @@ func (x *Relation) GetUpdatedAt() int64 {
 type Event struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Location    *LocationData `protobuf:"bytes,10,opt,name=location,proto3" json:"location,omitempty"`
 	Title       string        `protobuf:"bytes,11,opt,name=title,proto3" json:"title,omitempty"`
 	Description string        `protobuf:"bytes,12,opt,name=description,proto3" json:"description,omitempty"`
 	// Time data
+	// @gotags: json:"happened_at,omitempty"
 	HappenedAt int64 `protobuf:"varint,20,opt,name=happened_at,json=happenedAt,proto3" json:"happened_at,omitempty"`
-	UpdatedAt  int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// @gotags: json:"updated_at,omitempty"
+	UpdatedAt int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Additional
 	Tags          []string `protobuf:"bytes,30,rep,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -263,18 +276,24 @@ func (x *Event) GetTags() []string {
 type Source struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
-	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
-	Url         string `protobuf:"bytes,11,opt,name=url,proto3" json:"url,omitempty"`
+	Name string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
+	Url  string `protobuf:"bytes,11,opt,name=url,proto3" json:"url,omitempty"`
+	// @gotags: json:"root_url,omitempty"
 	RootUrl     string `protobuf:"bytes,12,opt,name=root_url,json=rootUrl,proto3" json:"root_url,omitempty"`
 	Reliability int32  `protobuf:"varint,13,opt,name=reliability,proto3" json:"reliability,omitempty"`
 	Monitoring  int32  `protobuf:"varint,14,opt,name=monitoring,proto3" json:"monitoring,omitempty"`
 	// Time data
+	// @gotags: json:"created_at,omitempty"
 	CreatedAt int64 `protobuf:"varint,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// @gotags: json:"updated_at,omitempty"
 	UpdatedAt int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Additional
 	Tags          []string `protobuf:"bytes,30,rep,name=tags,proto3" json:"tags,omitempty"`
@@ -399,16 +418,21 @@ func (x *Source) GetTags() []string {
 type Person struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Role        string `protobuf:"bytes,11,opt,name=role,proto3" json:"role,omitempty"`
 	Nationality string `protobuf:"bytes,12,opt,name=nationality,proto3" json:"nationality,omitempty"`
 	// Time data
+	// @gotags: json:"birth_date,omitempty"
 	BirthDate int64 `protobuf:"varint,20,opt,name=birth_date,json=birthDate,proto3" json:"birth_date,omitempty"`
+	// @gotags: json:"updated_at,omitempty"
 	UpdatedAt int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Additional
 	Tags          []string `protobuf:"bytes,30,rep,name=tags,proto3" json:"tags,omitempty"`
@@ -527,17 +551,23 @@ func (x *Person) GetAliases() []string {
 type Organization struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Name string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Type string `protobuf:"bytes,11,opt,name=type,proto3" json:"type,omitempty"`
 	// Time data
-	FoundedAt    int64 `protobuf:"varint,20,opt,name=founded_at,json=foundedAt,proto3" json:"founded_at,omitempty"`
+	// @gotags: json:"founded_at,omitempty"
+	FoundedAt int64 `protobuf:"varint,20,opt,name=founded_at,json=foundedAt,proto3" json:"founded_at,omitempty"`
+	// @gotags: json:"discovered_at,omitempty"
 	DiscoveredAt int64 `protobuf:"varint,21,opt,name=discovered_at,json=discoveredAt,proto3" json:"discovered_at,omitempty"`
-	LastVisited  int64 `protobuf:"varint,22,opt,name=last_visited,json=lastVisited,proto3" json:"last_visited,omitempty"`
+	// @gotags: json:"last_visited,omitempty"
+	LastVisited int64 `protobuf:"varint,22,opt,name=last_visited,json=lastVisited,proto3" json:"last_visited,omitempty"`
 	// Additional
 	Tags          []string `protobuf:"bytes,30,rep,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -647,9 +677,12 @@ func (x *Organization) GetTags() []string {
 type Website struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Url         string `protobuf:"bytes,10,opt,name=url,proto3" json:"url,omitempty"`
@@ -657,9 +690,12 @@ type Website struct {
 	Title       string `protobuf:"bytes,12,opt,name=title,proto3" json:"title,omitempty"`
 	Description string `protobuf:"bytes,13,opt,name=description,proto3" json:"description,omitempty"`
 	// Time data
-	FoundedAt    int64 `protobuf:"varint,20,opt,name=founded_at,json=foundedAt,proto3" json:"founded_at,omitempty"`
+	// @gotags: json:"founded_at,omitempty"
+	FoundedAt int64 `protobuf:"varint,20,opt,name=founded_at,json=foundedAt,proto3" json:"founded_at,omitempty"`
+	// @gotags: json:"discovered_at,omitempty"
 	DiscoveredAt int64 `protobuf:"varint,21,opt,name=discovered_at,json=discoveredAt,proto3" json:"discovered_at,omitempty"`
-	LastVisited  int64 `protobuf:"varint,22,opt,name=last_visited,json=lastVisited,proto3" json:"last_visited,omitempty"`
+	// @gotags: json:"last_visited,omitempty"
+	LastVisited int64 `protobuf:"varint,22,opt,name=last_visited,json=lastVisited,proto3" json:"last_visited,omitempty"`
 	// Additional
 	Tags          []string `protobuf:"bytes,30,rep,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -881,23 +917,28 @@ type isRelation_Value_Kind interface {
 }
 
 type Relation_Value_StringValue struct {
-	StringValue string `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3,oneof"`
+	// @gotags: json:"string_value,omitempty"
+	StringValue string `protobuf:"bytes,1,opt,name=string_value,json=stringValue,proto3,oneof" json:"string_value,omitempty"`
 }
 
 type Relation_Value_IntValue struct {
-	IntValue int64 `protobuf:"varint,2,opt,name=int_value,json=intValue,proto3,oneof"`
+	// @gotags: json:"int_value,omitempty"
+	IntValue int64 `protobuf:"varint,2,opt,name=int_value,json=intValue,proto3,oneof" json:"int_value,omitempty"`
 }
 
 type Relation_Value_DoubleValue struct {
-	DoubleValue float64 `protobuf:"fixed64,3,opt,name=double_value,json=doubleValue,proto3,oneof"`
+	// @gotags: json:"double_value,omitempty"
+	DoubleValue float64 `protobuf:"fixed64,3,opt,name=double_value,json=doubleValue,proto3,oneof" json:"double_value,omitempty"`
 }
 
 type Relation_Value_FloatValue struct {
-	FloatValue float32 `protobuf:"fixed32,4,opt,name=float_value,json=floatValue,proto3,oneof"`
+	// @gotags: json:"float_value,omitempty"
+	FloatValue float32 `protobuf:"fixed32,4,opt,name=float_value,json=floatValue,proto3,oneof" json:"float_value,omitempty"`
 }
 
 type Relation_Value_BoolValue struct {
-	BoolValue bool `protobuf:"varint,5,opt,name=bool_value,json=boolValue,proto3,oneof"`
+	// @gotags: json:"bool_value,omitempty"
+	BoolValue bool `protobuf:"varint,5,opt,name=bool_value,json=boolValue,proto3,oneof" json:"bool_value,omitempty"`
 }
 
 func (*Relation_Value_StringValue) isRelation_Value_Kind() {}
@@ -914,13 +955,13 @@ var File_model_osint_proto protoreflect.FileDescriptor
 
 const file_model_osint_proto_rawDesc = "" +
 	"\n" +
-	"\x11model/osint.proto\x12\x05model\x1a\x12model/common.proto\"\xaf\x04\n" +
-	"\bRelation\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x13\n" +
-	"\x04from\x18\x03 \x01(\tR\x05_from\x12\x0f\n" +
-	"\x02to\x18\x04 \x01(\tR\x03_to\x12\x11\n" +
-	"\x03rev\x18\x05 \x01(\tR\x04_rev\x12\x12\n" +
+	"\x11model/osint.proto\x12\x05model\x1a\x12model/common.proto\"\xaa\x04\n" +
+	"\bRelation\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x12\n" +
+	"\x04from\x18\x03 \x01(\tR\x04from\x12\x0e\n" +
+	"\x02to\x18\x04 \x01(\tR\x02to\x12\x10\n" +
+	"\x03rev\x18\x05 \x01(\tR\x03rev\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x1e\n" +
 	"\n" +
@@ -944,11 +985,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"floatValue\x12\x1f\n" +
 	"\n" +
 	"bool_value\x18\x05 \x01(\bH\x00R\tboolValueB\x06\n" +
-	"\x04kind\"\x95\x02\n" +
-	"\x05Event\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\x04kind\"\x92\x02\n" +
+	"\x05Event\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12/\n" +
 	"\blocation\x18\n" +
 	" \x01(\v2\x13.model.LocationDataR\blocation\x12\x14\n" +
@@ -958,11 +999,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"happenedAt\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xae\x02\n" +
-	"\x06Source\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xab\x02\n" +
+	"\x06Source\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x10\n" +
@@ -976,11 +1017,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"created_at\x18\x14 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\x8f\x02\n" +
-	"\x06Person\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\x8c\x02\n" +
+	"\x06Person\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x12\n" +
@@ -991,11 +1032,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
 	"\x04tags\x18\x1e \x03(\tR\x04tags\x12\x18\n" +
-	"\aaliases\x18\x1f \x03(\tR\aaliases\"\x82\x02\n" +
-	"\fOrganization\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\aaliases\x18\x1f \x03(\tR\aaliases\"\xff\x01\n" +
+	"\fOrganization\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x12\n" +
@@ -1004,11 +1045,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"founded_at\x18\x14 \x01(\x03R\tfoundedAt\x12#\n" +
 	"\rdiscovered_at\x18\x15 \x01(\x03R\fdiscoveredAt\x12!\n" +
 	"\flast_visited\x18\x16 \x01(\x03R\vlastVisited\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xb7\x02\n" +
-	"\aWebsite\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xb4\x02\n" +
+	"\aWebsite\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12\x10\n" +
 	"\x03url\x18\n" +
 	" \x01(\tR\x03url\x12\x16\n" +

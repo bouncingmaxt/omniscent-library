@@ -3,8 +3,8 @@ name: Automatic Tagging
 on:
   push:
     branches:
-      - main
-      - pre-release
+      - 'main'
+      - 'pre-release'
 
 jobs:
   tag:
