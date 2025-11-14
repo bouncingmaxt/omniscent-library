@@ -24,7 +24,7 @@
       "name": "WebsiteService"
     },
     {
-      "name": "UserService"
+      "name": "AuthenticationService"
     }
   ],
   "consumes": [
@@ -704,7 +704,7 @@
     },
     "/v1/users/login": {
       "post": {
-        "operationId": "UserService_LoginUser",
+        "operationId": "AuthenticationService_LoginUser",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -748,13 +748,13 @@
           }
         ],
         "tags": [
-          "UserService"
+          "AuthenticationService"
         ]
       }
     },
     "/v1/users/register": {
       "post": {
-        "operationId": "UserService_RegisterUser",
+        "operationId": "AuthenticationService_RegisterUser",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -798,7 +798,7 @@
           }
         ],
         "tags": [
-          "UserService"
+          "AuthenticationService"
         ]
       }
     },
